@@ -737,18 +737,16 @@ const App: React.FC = () => {
 
           {/* Reasons Tab */}
           {activeTab === 'reasons' && (
-            <div className="animate-luxury-in">
+            <div className="animate-luxury-in max-w-2xl mx-auto">
               <div className="glass-card rounded-[3.5rem] p-10 shadow-2xl border-none inner-glow">
                 <div className="text-center mb-10">
-                  <h2 className="text-3xl font-serif text-white italic">100 Reasons Why...</h2>
+                  <h2 className="text-3xl font-serif text-white italic">124 Reasons Why...</h2>
                   <p className="text-[#d8c3a5]/60 text-[10px] font-black uppercase tracking-[0.3em] mt-3">Curated reasons for my Singularity</p>
                 </div>
                 <div className="grid grid-cols-1 gap-4 max-h-[65vh] overflow-y-auto pr-3 custom-scrollbar">
                   {loveReasons.map((reason, idx) => (
                     <div key={idx} className="p-6 bg-[#1a1a1a]/40 border border-[#d8c3a5]/10 rounded-3xl flex gap-5 items-center group hover:border-[#d8c3a5]/50 hover:shadow-md transition-all duration-500">
-                      <div className="w-10 h-10 rounded-full bg-[#d8c3a5]/10 flex items-center justify-center text-[11px] font-black text-[#d8c3a5] group-hover:bg-[#d8c3a5] group-hover:text-[#0c0c0c] transition-colors shrink-0 shadow-sm">
-                        {idx + 1}
-                      </div>
+                      <div className="w-10 h-10 rounded-full bg-[#d8c3a5]/10 flex items-center justify-center text-[11px] font-black text-[#d8c3a5] group-hover:bg-[#d8c3a5] group-hover:text-[#0c0c0c] transition-colors shrink-0 shadow-sm">{idx + 1}</div>
                       <p className="text-base text-slate-400 font-medium leading-relaxed italic">{reason}</p>
                     </div>
                   ))}
@@ -756,6 +754,7 @@ const App: React.FC = () => {
               </div>
             </div>
           )}
+
 
           {/* Enhanced Info Tab (The Grand Vision) */}
           {activeTab === 'info' && (
