@@ -127,16 +127,6 @@ const App: React.FC = () => {
   // Luxury Missions
   const missions = [
     {
-      id: '123231',
-      title: "Project 123231",
-      status: "Initializing",
-      type: "Grand Surprise",
-      progress: 35,
-      hint: "A masterpiece specifically designed for your smile. It's connected to a date that redefined my existence.",
-      icon: <Diamond className="text-amber-400 animate-pulse" />,
-      luxury: true
-    },
-    {
       id: 'sanctuary',
       title: "Operation: Sanctuary",
       status: "Online",
@@ -145,6 +135,16 @@ const App: React.FC = () => {
       hint: "A digital fortress for your heart. This space will grow as we grow. Version 2.0 is now live.",
       icon: <ShieldCheck className="text-emerald-400" />,
       luxury: false
+    },
+    {
+      id: '123231',
+      title: "Project 123231",
+      status: "Initializing",
+      type: "Grand Surprise",
+      progress: 35,
+      hint: "A masterpiece specifically designed for your smile. It's connected to a date that redefined my existence.",
+      icon: <Diamond className="text-amber-400 animate-pulse" />,
+      luxury: true
     },
     {
       id: 'modeling',
