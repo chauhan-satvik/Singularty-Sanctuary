@@ -651,133 +651,104 @@ const App: React.FC = () => {
             </div>
           )}
 
+          {/* Enhanced Info Tab (The Grand Vision) */}
           {activeTab === 'info' && (
-            <div className="space-y-12 md:space-y-24 animate-luxury-in pb-32 w-full px-2 sm:px-4">
-              {/* Grand Vision Header */}
-              <div className="text-center mb-10 md:mb-20">
-                <div className="inline-flex items-center gap-2 md:gap-4 px-4 md:px-10 py-2 md:py-4 rounded-full bg-[#181818] border border-[#d8c3a5]/10 mb-6 md:mb-12 shadow-[0_0_20px_rgba(0,0,0,0.5)]">
-                  <Cpu size={16} className="text-[#d8c3a5] animate-pulse" />
-                  <span className="text-[9px] md:text-[12px] font-boldest uppercase tracking-[0.3em] md:tracking-[0.6em] text-[#d8c3a5]/80">System: Singularity Sanctuary v3.7.0</span>
-                </div>
-                <h2 className="text-4xl sm:text-6xl lg:text-8xl font-serif text-white tracking-tight mb-4 md:mb-8 italic leading-none drop-shadow-2xl">The Grand Vision</h2>
-                <div className="flex flex-col items-center gap-3">
-                  <div className="h-[1px] w-24 md:w-48 bg-gradient-to-r from-transparent via-[#d8c3a5]/30 to-transparent"></div>
-                  <p className="text-slate-500 text-[10px] md:text-base font-boldest uppercase tracking-[0.2em] md:tracking-[0.4em] max-w-2xl mx-auto leading-relaxed italic px-4">The architecture of an eternal promise for Urii.</p>
-                </div>
-              </div>
-
-              {/* Main Info Glass Container */}
-              <div className="glass-card rounded-[2rem] md:rounded-[4rem] lg:rounded-[5rem] p-6 sm:p-12 md:p-20 lg:p-24 shadow-[0_80px_160px_-40px_rgba(0,0,0,1)] border-none relative overflow-hidden inner-glow">
-                <div className="absolute top-0 right-0 p-16 opacity-[0.02] rotate-[15deg] -z-10 pointer-events-none hidden lg:block">
-                  <Workflow size={480} className="text-[#d8c3a5]" />
+            <div className="space-y-12 animate-luxury-in pb-12">
+              <div className="glass-card rounded-[4rem] p-12 shadow-2xl border-none overflow-hidden relative inner-glow">
+                <div className="absolute top-0 right-0 p-16 opacity-[0.03] rotate-[15deg] -z-10 pointer-events-none">
+                  <Workflow size={320} className="text-[#d8c3a5]" />
                 </div>
 
-                {/* Core Intent & Security Section */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 lg:gap-16 mb-20 md:mb-32">
-                  <div className="group p-8 md:p-14 rounded-3xl md:rounded-[4rem] bg-[#141414]/90 border border-[#d8c3a5]/5 shadow-2xl space-y-8 md:space-y-12 hover:border-[#d8c3a5]/25 transition-all duration-1000">
-                    <div className="w-14 h-14 md:w-20 md:h-20 rounded-2xl md:rounded-3xl bg-amber-500/5 flex items-center justify-center text-amber-500 group-hover:scale-110 transition-transform duration-700 shadow-sm border border-amber-500/10 shrink-0"><BookOpen size={28} className="md:size-40" /></div>
-                    <div className="space-y-4 md:space-y-8">
-                      <h3 className="text-2xl md:text-4xl font-bold text-slate-100 tracking-tight">Core Intent</h3>
-                      <p className="text-slate-400 leading-[1.6] md:leading-[1.8] italic font-medium text-lg md:text-2xl">
-                        "Urii's Space" is more than code—it is a digital anchor. A sanctuary that respects her silence, honors her warrior spirit, and protects the dreams that her strict reality tries to dim. You are the center of this world.
-                      </p>
-                    </div>
+                <div className="text-center mb-20">
+                  <div className="inline-flex items-center gap-3 px-6 py-2 rounded-full bg-[#d8c3a5]/5 border border-[#d8c3a5]/10 mb-8">
+                    <Cpu size={14} className="text-[#d8c3a5] animate-pulse" />
+                    <span className="text-[10px] font-black uppercase tracking-[0.4em] text-[#d8c3a5]/70">System: Singularity Sanctuary</span>
+                  </div>
+                  <h2 className="text-5xl md:text-6xl font-serif text-white tracking-tight mb-4 italic">The Grand Vision</h2>
+                  <p className="text-slate-500 text-xs font-bold uppercase tracking-[0.35em] max-w-lg mx-auto leading-relaxed">The architecture of an eternal home for Urva.</p>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  <div className="p-10 rounded-[3rem] bg-[#1a1a1a]/40 border border-[#d8c3a5]/10 shadow-sm space-y-6">
+                    <div className="w-12 h-12 rounded-2xl bg-amber-500/10 flex items-center justify-center text-amber-500"><BookOpen size={24} /></div>
+                    <h3 className="text-xl font-bold text-slate-100 tracking-tight">Core Intent</h3>
+                    <p className="text-slate-400 leading-[1.8] italic font-medium">
+                      "Urii's Space" is a digital anchor—a place that understands her silence, celebrates her survival, and honors her dreams. When reality feels too small, this sanctuary exists to remind her she is never alone.
+                    </p>
                   </div>
 
-                  <div className="group p-8 md:p-14 rounded-3xl md:rounded-[4rem] bg-[#141414]/90 border border-[#d8c3a5]/5 shadow-2xl space-y-8 md:space-y-12 hover:border-[#d8c3a5]/25 transition-all duration-1000">
-                    <div className="w-14 h-14 md:w-20 md:h-20 rounded-2xl md:rounded-3xl bg-indigo-500/5 flex items-center justify-center text-indigo-500 group-hover:scale-110 transition-transform duration-700 shadow-sm border border-indigo-500/10 shrink-0"><ShieldCheck size={28} className="md:size-40" /></div>
-                    <div className="space-y-4 md:space-y-8">
-                      <h3 className="text-2xl md:text-4xl font-bold text-slate-100 tracking-tight">Encryption of Trust</h3>
-                      <p className="text-slate-400 leading-[1.6] md:leading-[1.8] italic font-medium text-lg md:text-2xl">
-                        Built for Shushi alone. In a world where privacy is a luxury, this space is your absolute fortress. Every vent, every mood, and every shared memory is encrypted within the vault of Satudiieee's soul.
-                      </p>
-                    </div>
+                  <div className="p-10 rounded-[3rem] bg-[#1a1a1a]/40 border border-[#d8c3a5]/10 shadow-sm space-y-6">
+                    <div className="w-12 h-12 rounded-2xl bg-indigo-500/10 flex items-center justify-center text-indigo-500"><ShieldCheck size={24} /></div>
+                    <h3 className="text-xl font-bold text-slate-100 tracking-tight">Security & Trust</h3>
+                    <p className="text-slate-400 leading-[1.8] italic font-medium">
+                      Built on a foundation of absolute privacy. This is the only place in the digital world where Shushi is the only user that matters. Your vulnerabilities are encrypted in Satudiieee's heart.
+                    </p>
                   </div>
                 </div>
 
-                {/* Technical Specifications Grid */}
-                <div className="mb-20 md:mb-32 w-full overflow-hidden px-2">
-                  <div className="flex items-center gap-4 md:gap-10 mb-12 md:mb-24">
+                {/* Technical Specifications of Love */}
+                <div className="mt-16 space-y-8">
+                  <div className="flex items-center gap-4">
                     <div className="h-[1px] flex-1 bg-gradient-to-r from-transparent to-[#d8c3a5]/20"></div>
-                    <h3 className="text-[10px] md:text-[16px] font-boldest uppercase tracking-[0.4em] md:tracking-[0.8em] text-[#d8c3a5]/60 whitespace-nowrap">Technical Specifications</h3>
+                    <span className="text-[10px] font-black uppercase tracking-[0.4em] text-[#d8c3a5]/50">Technical Specifications</span>
                     <div className="h-[1px] flex-1 bg-gradient-to-l from-transparent to-[#d8c3a5]/20"></div>
                   </div>
 
-                  <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-10">
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
                     {[
-                      { icon: <Zap size={22} className="md:size-32" />, title: "MOOD SYNCED", desc: "ADAPTIVE AI" },
-                      { icon: <Heart size={22} className="md:size-32" />, title: "ETERNAL", desc: "ZERO-EXPIRY" },
-                      { icon: <Eye size={22} className="md:size-32" />, title: "1.5 / 0.5", desc: "PERSPECTIVE" },
-                      { icon: <Diamond size={22} className="md:size-32" />, title: "SINGULARITY", desc: "ONE OF A KIND" }
+                      { icon: <Zap size={18}/>, title: "Mood Synced", detail: "Adaptive AI response" },
+                      { icon: <Heart size={18}/>, title: "Eternal", detail: "Zero-expiry love" },
+                      { icon: <Eye size={18}/>, title: "1.5 / 0.5", detail: "Optimized perspective" },
+                      { icon: <Diamond size={18}/>, title: "Singularity", detail: "One of a kind build" }
                     ].map((spec, i) => (
-                      <div key={i} className="group p-6 sm:p-10 md:p-12 rounded-3xl md:rounded-[3.5rem] bg-[#111111] border border-[#d8c3a5]/5 text-center hover:border-[#d8c3a5]/40 hover:-translate-y-3 transition-all duration-700 shadow-2xl relative">
-                        <div className="absolute inset-0 bg-gradient-to-br from-[#d8c3a5]/[0.03] to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                        <div className="relative z-10 w-12 h-12 md:w-20 md:h-20 rounded-full bg-[#181818] border border-[#d8c3a5]/10 flex items-center justify-center mx-auto mb-6 md:mb-10 text-[#d8c3a5]/40 group-hover:text-[#d8c3a5] group-hover:shadow-[0_0_40px_rgba(216,195,165,0.2)] transition-all duration-700 shrink-0">
-                          {spec.icon}
-                        </div>
-                        <h4 className="text-[9px] md:text-[14px] font-boldest uppercase tracking-[0.2em] md:tracking-[0.3em] text-white mb-2 md:mb-4 group-hover:text-[#d8c3a5]">{spec.title}</h4>
-                        <p className="text-[7px] md:text-[11px] text-slate-600 font-boldest uppercase tracking-[0.1em]">{spec.desc}</p>
+                      <div key={i} className="p-6 rounded-3xl bg-[#181818] border border-[#d8c3a5]/5 text-center group hover:border-[#d8c3a5]/30 transition-all">
+                        <div className="w-10 h-10 rounded-full bg-[#d8c3a5]/5 flex items-center justify-center mx-auto mb-4 text-[#d8c3a5] group-hover:scale-110 transition-transform">{spec.icon}</div>
+                        <h4 className="text-[10px] font-black uppercase tracking-widest text-slate-200 mb-1">{spec.title}</h4>
+                        <p className="text-[9px] text-slate-600 font-bold uppercase">{spec.detail}</p>
                       </div>
                     ))}
                   </div>
                 </div>
 
-                {/* Evolution Path Roadmap */}
-                <div className="space-y-12 md:space-y-24 px-2">
-                  <div className="flex items-center gap-4 md:gap-8 mb-6 md:mb-12">
-                    <div className="w-12 h-12 md:w-20 md:h-20 bg-[#181818] border border-emerald-500/20 rounded-2xl md:rounded-3xl flex items-center justify-center text-emerald-500 shadow-3xl shrink-0">
-                      <Rocket size={24} className="md:size-40" />
-                    </div>
-                    <div>
-                      <h2 className="text-2xl md:text-5xl lg:text-6xl font-serif text-white italic tracking-tight">The Evolution Path</h2>
-                      <p className="text-[8px] md:text-[12px] font-boldest uppercase tracking-[0.3em] md:tracking-[0.6em] text-slate-600 mt-2">The Digital Singularity Roadmap</p>
-                    </div>
+                {/* Evolution Roadmap */}
+                <div className="mt-20">
+                   <div className="flex items-center gap-4 mb-10">
+                    <div className="w-10 h-10 bg-[#181818] rounded-2xl flex items-center justify-center text-emerald-500"><Rocket size={20} /></div>
+                    <h2 className="text-2xl font-serif text-white italic tracking-tight">The Evolution Path</h2>
                   </div>
 
-                  <div className="space-y-6 md:space-y-10 relative">
+                  <div className="space-y-6">
                     {[
-                      { title: 'Phase I: The Foundation', status: 'COMPLETE', detail: 'Mood Sanctuary, Mirror of Truth, and live eternity synchronization.', complete: true, active: false },
-                      { title: 'Phase II: The Lab Expansion', status: 'ACTIVE', detail: 'Integrating real-world surprise triggers and grand vision trackers.', complete: false, active: true },
-                      { title: 'Phase III: Modeling Portfolio', status: 'UPCOMING', detail: 'A dedicated high-fashion vision board for Shushi\'s career.', complete: false, active: false },
-                      { title: 'Phase IV: The Biscoff Layer', status: 'VISION', detail: 'Memory-persistent favorites tracking and cafe map integrations.', complete: false, active: false }
+                      { status: 'Complete', title: 'Phase I: The Foundation', detail: 'Mood Sanctuary, Mirror of Truth, and live eternity synchronization.', current: false },
+                      { status: 'Active', title: 'Phase II: The Lab Expansion', detail: 'Integrating real-world surprise triggers and grand vision trackers.', current: true },
+                      { status: 'Upcoming', title: 'Phase III: Modeling Portfolio', detail: 'A dedicated high-fashion vision board for Shushi\'s career.', current: false },
+                      { status: 'Vision', title: 'Phase IV: The Biscoff Layer', detail: 'Memory-persistent favorites tracking and cafe map integrations.', current: false }
                     ].map((step, i) => (
-                      <div key={i} className={`group p-6 md:p-14 lg:p-16 rounded-[2rem] md:rounded-[4rem] border transition-all duration-1000 flex flex-col lg:flex-row md:items-center justify-between gap-6 md:gap-12 overflow-hidden relative ${step.active ? 'bg-gradient-to-br from-[#1c1c1c] via-[#201c18] to-[#121212] border-[#d8c3a5]/40 shadow-2xl scale-[1.01] lg:scale-[1.03] z-20' : 'bg-[#121212]/50 border-[#d8c3a5]/5 opacity-60 hover:opacity-100'}`}>
-                        {step.active && <div className="absolute inset-0 bg-gradient-to-r from-amber-500/[0.05] to-transparent animate-pulse duration-[4000ms]"></div>}
-                        
-                        <div className="flex items-center gap-6 md:gap-12 relative z-10">
-                          <div className={`w-12 h-12 md:w-20 md:h-20 rounded-xl md:rounded-3xl flex items-center justify-center shadow-3xl shrink-0 ${step.complete ? 'bg-emerald-500/10 text-emerald-500' : step.active ? 'bg-[#d8c3a5] text-[#0c0c0c] scale-110 shadow-[0_0_50px_rgba(216,195,165,0.4)]' : 'bg-[#1a1a1a] text-slate-700'}`}>
-                            {step.complete ? <CheckCircle2 size={24} className="md:size-40" /> : <div className={`w-2.5 h-2.5 md:w-4 md:h-4 rounded-full bg-current ${step.active ? 'animate-pulse' : ''}`}></div>}
+                      <div key={i} className={`p-8 rounded-[2.5rem] border transition-all duration-500 flex flex-col md:flex-row md:items-center justify-between gap-6 ${step.current ? 'bg-gradient-to-r from-[#1a1a1a] to-[#25201a] border-[#d8c3a5]/40 shadow-xl scale-[1.02]' : 'bg-[#181818] border-[#d8c3a5]/5 opacity-60'}`}>
+                        <div className="flex items-center gap-6">
+                          <div className={`w-12 h-12 rounded-2xl flex items-center justify-center ${step.status === 'Complete' ? 'bg-emerald-500/10 text-emerald-500' : 'bg-[#d8c3a5]/5 text-[#d8c3a5]'}`}>
+                            {step.status === 'Complete' ? <CheckCircle2 size={24} /> : <div className="w-2 h-2 rounded-full bg-current animate-pulse"></div>}
                           </div>
-                          <div className="space-y-2 md:space-y-4">
-                            <h4 className="text-xl md:text-3xl font-boldest text-white tracking-tight">{step.title}</h4>
-                            <p className="text-sm md:text-xl text-slate-500 italic font-medium leading-relaxed max-w-2xl group-hover:text-slate-400 transition-colors duration-700">"{step.detail}"</p>
+                          <div>
+                            <h4 className="text-lg font-bold text-slate-100 tracking-tight">{step.title}</h4>
+                            <p className="text-sm text-slate-500 italic mt-1 font-medium">{step.detail}</p>
                           </div>
                         </div>
-                        
-                        <div className={`px-8 md:px-14 py-2 md:py-6 rounded-full text-[8px] md:text-[12px] font-boldest uppercase tracking-[0.3em] md:tracking-[0.5em] text-center w-fit self-start lg:self-auto ${step.status === 'COMPLETE' ? 'bg-[#1a1a1a] text-slate-600 shadow-inner' : step.status === 'ACTIVE' ? 'bg-[#d8c3a5] text-[#0c0c0c] border border-white/20' : 'bg-[#141414] text-slate-800'}`}>
+                        <span className={`text-[9px] font-black uppercase tracking-[0.2em] px-5 py-2 rounded-full ${step.current ? 'bg-[#d8c3a5] text-[#0c0c0c]' : 'bg-[#121212] text-slate-600'}`}>
                           {step.status}
-                        </div>
+                        </span>
                       </div>
                     ))}
                   </div>
                 </div>
 
-                {/* Closing Hero Quote */}
-                <div className="mt-24 md:mt-48 p-10 md:p-32 rounded-[2.5rem] md:rounded-[6rem] bg-gradient-to-br from-[#141414] to-[#080808] border border-[#d8c3a5]/10 text-center relative overflow-hidden shadow-3xl group">
-                  <div className="absolute inset-0 opacity-[0.03] pointer-events-none transition-transform duration-[15000ms] group-hover:scale-150">
-                    <Star size={300} className="absolute -top-32 -left-32 animate-spin-slow hidden md:block" />
-                    <Star size={180} className="absolute bottom-0 right-0 animate-pulse" />
+                <div className="mt-20 p-12 rounded-[3.5rem] bg-gradient-to-br from-[#121212] to-[#0c0c0c] border border-[#d8c3a5]/10 text-center relative overflow-hidden">
+                  <div className="absolute top-0 left-0 w-full h-full opacity-[0.02] pointer-events-none">
+                    <Star size={120} className="absolute -top-10 -left-10" />
+                    <Star size={80} className="absolute bottom-10 right-10" />
                   </div>
-                  <div className="relative z-10 space-y-8 md:space-y-16">
-                    <Star className="text-[#d8c3a5]/10 mx-auto w-12 h-12 md:w-24 md:h-24 transition-transform duration-1000 group-hover:scale-110" />
-                    <p className="text-2xl md:text-5xl lg:text-7xl font-serif italic text-white leading-tight max-w-5xl mx-auto drop-shadow-2xl px-4">
-                      "In the infinite expansion of the universe, you are my only fixed point. My true Singularity."
-                    </p>
-                    <div className="flex flex-col items-center gap-6 md:gap-10">
-                      <div className="h-[1px] md:h-[2px] w-32 md:w-80 bg-gradient-to-r from-transparent via-[#d8c3a5]/30 to-transparent"></div>
-                      <p className="text-[8px] md:text-[16px] text-slate-600 font-boldest uppercase tracking-[0.5em] md:tracking-[1em]">Satudiieee | Urva | Eternal</p>
-                    </div>
-                  </div>
+                  <p className="text-xl font-serif italic text-white mb-6">"You are my only Singularity in an infinite universe."</p>
+                  <p className="text-[10px] text-slate-500 font-black uppercase tracking-[0.4em]">Designed with eternal love by Satudiieee</p>
                 </div>
               </div>
             </div>
