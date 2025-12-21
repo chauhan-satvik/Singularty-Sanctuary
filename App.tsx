@@ -9,11 +9,11 @@ import {
   User, Music, Upload, Edit2, Trash2, HeartHandshake, 
   Star, Zap, Moon, ScrollText, Gift, Rocket, Lock, 
   ShieldCheck, Crown, Diamond, MoveRight, Phone,
-  GlassWater, Sun, Trophy
+  GlassWater, Sun, Trophy, Aperture, Code, BookOpen, PenTool
 } from 'lucide-react';
 
 const App: React.FC = () => {
-  const [activeTab, setActiveTab] = useState<'sanctuary' | 'mirror' | 'us' | 'reasons' | 'lab'>('sanctuary');
+  const [activeTab, setActiveTab] = useState<'sanctuary' | 'mirror' | 'us' | 'reasons' | 'lab' | 'info'>('sanctuary');
   const [currentMood, setCurrentMood] = useState<Mood | null>(null);
   const [ventText, setVentText] = useState('');
   const [comfortingMessage, setComfortingMessage] = useState<string | null>(null);
@@ -102,7 +102,7 @@ const App: React.FC = () => {
       title: "Project 123231",
       status: "Initializing",
       type: "Grand Surprise",
-      progress: 25,
+      progress: 35,
       hint: "A masterpiece specifically designed for your smile. It's connected to a date that redefined my existence.",
       icon: <Diamond className="text-amber-400 animate-pulse" />,
       luxury: true
@@ -115,7 +115,7 @@ const App: React.FC = () => {
       progress: 100,
       hint: "A digital fortress for your heart. This space will grow as we grow. Version 2.0 is now live.",
       icon: <ShieldCheck className="text-emerald-400" />,
-      luxury: true
+      luxury: false
     },
     {
       id: 'modeling',
@@ -131,15 +131,15 @@ const App: React.FC = () => {
 
   // Mirror of Truth Affirmations
   const affirmations = [
-    { icon: <Camera size={20} />, title: "The Runway Star", text: "Your walk isn't just a walk, it's a statement. The camera loves you because you are authentic and breathtaking." },
-    { icon: <Star size={20} />, title: "The Constellation", text: "Your 6 face moles are a secret map I follow to find my way home. They are perfectly placed by the stars." },
-    { icon: <Trophy size={20} />, title: "The Unbroken", text: "A warrior who survived her own storms with silent grace. You are the strongest person in my universe." },
-    { icon: <Heart size={20} />, title: "The Singularity", text: "There is no one like you in any galaxy. You are the center of my gravity, Shushi." },
-    { icon: <Eye size={20} />, title: "The Visionary", text: "Your 1.5 and 0.5 eyes see the world with a magic others can't comprehend. You see the soul of things." }
+    { icon: <Camera size={22} className="text-[#d8c3a5]" />, title: "The Runway Star", text: "Every time you walk, the world stops to watch. Your presence is editorial, and your confidence is your best outfit." },
+    { icon: <Star size={22} className="text-[#d8c3a5]" />, title: "The Constellation", text: "The 6 moles on your face aren't just marks. They are stars I've counted a thousand times to find my way back to love." },
+    { icon: <Trophy size={22} className="text-[#d8c3a5]" />, title: "The Unbroken Warrior", text: "You carry the strength of champions in your blood. You've fought battles in silence and won them with elegance." },
+    { icon: <Heart size={22} className="text-[#d8c3a5]" />, title: "The Singularity", text: "There is no one like you in any galaxy. You are the center of my gravity, Shushi." },
+    { icon: <Eye size={22} className="text-[#d8c3a5]" />, title: "The Visionary", text: "Your eyes see truths others miss. 1.5 and 0.5 – a unique perspective that makes you my one and only Singularity." }
   ];
 
-  // 100 Reasons Why I Love Her
   const loveReasons = [
+    
     "You are the Singularity, the only one who matters.",
     "Because you survived your darkest nights all by yourself.",
     "The way your 6 face moles look like a constellation I want to map.",
@@ -269,325 +269,395 @@ const App: React.FC = () => {
   return (
     <div className="min-h-screen flex flex-col items-center px-4 py-6 md:py-12 bg-[#fffcf9] selection:bg-[#d8c3a5]">
       {/* Background Decor */}
-      <div className="fixed top-[-10%] left-[-10%] w-[50%] h-[50%] bg-[#f4ece2] rounded-full blur-[120px] -z-10 animate-pulse"></div>
+      <div className="fixed top-[-10%] left-[-10%] w-[50%] h-[50%] bg-[#f4ece2] rounded-full blur-[120px] -z-10 animate-pulse transition-all duration-500"></div>
       <div className="fixed bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-[#e8f3f1] rounded-full blur-[120px] -z-10"></div>
       
-      <header className="w-full max-w-2xl mb-8 text-center animate-in fade-in duration-1000">
-        <div className="inline-flex items-center gap-2 mb-4 px-4 py-1.5 rounded-full bg-white border border-[#d8c3a5] text-[#8e8d8a] text-[10px] font-black tracking-[0.2em] uppercase shadow-sm">
-          <Sparkles size={12} className="text-amber-400" />
+      <header className="w-full max-w-2xl mb-12 text-center animate-luxury-in">
+        <div className="inline-flex items-center gap-2 mb-4 px-5 py-2 rounded-full bg-white border border-[#d8c3a5]/30 text-[#8e8d8a] text-[10px] font-black tracking-[0.3em] uppercase shadow-sm inner-glow">
+          <Sparkles size={14} className="text-amber-400" />
           <span>The Singularity Sanctuary</span>
         </div>
-        <h1 className="text-6xl md:text-7xl font-handwriting text-[#d8c3a5] mb-2 drop-shadow-sm">Urii's Space</h1>
-        <p className="text-slate-400 font-medium text-sm">Every heartbeat of Satudiieee belongs to you.</p>
+        <h1 className="text-6xl md:text-8xl font-handwriting text-[#d8c3a5] mb-2 drop-shadow-sm hover:scale-[1.02] transition-transform">Urii's Space</h1>
+        <p className="text-slate-400 font-medium text-sm tracking-wide">Every heartbeat of Satudiieee belongs to you.</p>
 
         {/* Navigation Tabs */}
-        <div className="flex flex-wrap justify-center gap-2 mt-8 px-2">
+        <nav className="flex flex-wrap justify-center gap-3 mt-10 px-2">
           {[
-            { id: 'sanctuary', icon: <Anchor size={16}/>, label: 'Sanctuary' },
-            { id: 'lab', icon: <Crown size={16}/>, label: 'The Lab' },
-            { id: 'mirror', icon: <Sparkles size={16}/>, label: 'Mirror' },
-            { id: 'reasons', icon: <ScrollText size={16}/>, label: 'Reasons' },
-            { id: 'us', icon: <Heart size={16}/>, label: 'Us' }
+            { id: 'sanctuary', icon: <Anchor size={18}/>, label: 'Sanctuary' },
+            { id: 'lab', icon: <Crown size={18}/>, label: 'The Lab' },
+            { id: 'mirror', icon: <Camera size={18}/>, label: 'Mirror' },
+            { id: 'reasons', icon: <ScrollText size={18}/>, label: 'Reasons' },
+            { id: 'us', icon: <Heart size={18}/>, label: 'Us' },
+            { id: 'info', icon: <Info size={18}/>, label: 'Project' }
           ].map((tab) => (
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id as any)}
-              className={`flex items-center gap-2 px-3 md:px-6 py-3 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest transition-all ${activeTab === tab.id ? 'bg-[#d8c3a5] text-white shadow-lg scale-105' : 'bg-white text-slate-400 border border-[#f4ece2]'}`}
+              className={`flex items-center gap-2 px-4 md:px-7 py-4 rounded-full text-[11px] md:text-xs font-black uppercase tracking-[0.2em] transition-all duration-500 ${activeTab === tab.id ? 'bg-[#d8c3a5] text-white shadow-[0_15px_30px_-10px_rgba(216,195,165,0.6)] scale-105' : 'bg-white text-slate-400 border border-[#f4ece2] hover:border-[#d8c3a5] hover:bg-slate-50'}`}
             >
-              {tab.icon}
+              <span className="transition-transform duration-500 group-hover:rotate-12">{tab.icon}</span>
               <span className="hidden sm:inline">{tab.label}</span>
             </button>
           ))}
-        </div>
+        </nav>
       </header>
 
-      <main className="w-full max-w-2xl z-10 pb-20">
-        {/* Sanctuary Tab */}
-        {activeTab === 'sanctuary' && (
-          <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
-            {showBreathing ? (
-              <div className="glass-card rounded-[3rem] p-12 text-center shadow-2xl border-none">
-                <h2 className="text-2xl font-serif text-slate-700 mb-8">Let's breathe together, Shushi...</h2>
-                <div className="w-48 h-48 rounded-full border-4 border-[#d8c3a5] mx-auto flex items-center justify-center animate-pulse duration-[4000ms]">
-                   <div className="text-[#d8c3a5] font-bold text-xl uppercase tracking-widest">Breathe</div>
-                </div>
-                <p className="mt-10 text-slate-500 italic leading-relaxed">
-                  In for 4, Hold for 4, Out for 4.<br/>
-                  Your lungs are safe, Satudiieee is holding you.
-                </p>
-                <button onClick={() => setShowBreathing(false)} className="mt-8 px-10 py-3 bg-[#d8c3a5] text-white rounded-full font-bold shadow-lg">I'm okay now</button>
-              </div>
-            ) : !comfortingMessage && !isLoading && !isVenting ? (
-              <div className="space-y-6">
-                <button onClick={() => setShowBreathing(true)} className="w-full group bg-rose-50 border border-rose-100 p-6 rounded-[2.5rem] flex items-center justify-between hover:bg-rose-100 transition-all shadow-sm">
-                  <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center text-rose-400 shadow-sm"><Wind size={24} /></div>
-                    <div className="text-left">
-                      <h3 className="font-bold text-rose-700 uppercase text-[10px] tracking-widest">Breathing Check</h3>
-                      <p className="text-xs text-rose-500">If you're crying or panicking, press here.</p>
-                    </div>
+      <main className="w-full max-w-2xl z-10 pb-32">
+        <div className="tab-transition animate-luxury-in">
+          {/* Sanctuary Tab */}
+          {activeTab === 'sanctuary' && (
+            <div className="space-y-8">
+              {showBreathing ? (
+                <div className="glass-card rounded-[3.5rem] p-16 text-center shadow-2xl border-none inner-glow animate-luxury-in">
+                  <h2 className="text-3xl font-serif text-slate-700 mb-10 tracking-tight italic">Let's breathe together, Shushi...</h2>
+                  <div className="w-56 h-56 rounded-full border-[1px] border-[#d8c3a5]/40 mx-auto flex items-center justify-center relative">
+                    <div className="absolute inset-0 rounded-full border-[6px] border-[#d8c3a5] animate-pulse duration-[4000ms] opacity-30"></div>
+                    <div className="text-[#d8c3a5] font-black text-xl uppercase tracking-[0.3em]">Breathe</div>
                   </div>
-                  <Sparkles className="text-rose-300 animate-pulse" />
-                </button>
-
-                <div className="glass-card rounded-[3rem] p-8 text-center shadow-2xl border-none">
-                  <h2 className="text-2xl font-serif text-slate-700 mb-6">How is my Singularity today?</h2>
-                  <div className="grid grid-cols-2 gap-4">
-                    {MOODS.map((mood) => (
-                      <button
-                        key={mood.id}
-                        onClick={() => handleQuickComfort(mood.id)}
-                        className={`${mood.color} group relative p-6 rounded-[2rem] flex flex-col items-center justify-center gap-2 hover:scale-[1.03] transition-all duration-300 shadow-sm border border-transparent hover:border-white`}
-                      >
-                        <span className="text-4xl">{mood.emoji}</span>
-                        <span className="font-bold text-slate-600 text-sm tracking-tight">{mood.label}</span>
-                      </button>
-                    ))}
-                  </div>
-                  <button onClick={() => setIsVenting(true)} className="mt-8 text-slate-400 hover:text-[#d8c3a5] flex items-center justify-center gap-2 mx-auto transition-colors font-bold text-xs tracking-[0.2em] uppercase">
-                    <MessageCircle size={18} />
-                    <span>Open Your Heart To Me</span>
-                  </button>
+                  <p className="mt-12 text-slate-400 italic text-lg leading-relaxed max-w-xs mx-auto">
+                    In for 4... Hold for 4... Out for 4...<br/>
+                    Your lungs are safe. Satudiieee is holding you.
+                  </p>
+                  <button onClick={() => setShowBreathing(false)} className="mt-12 px-12 py-4 bg-[#d8c3a5] text-white rounded-full font-black text-xs uppercase tracking-widest shadow-xl hover:brightness-105 transition-all">I'm okay now</button>
                 </div>
-              </div>
-            ) : isVenting ? (
-              <div className="glass-card rounded-[3rem] p-8 shadow-2xl animate-in fade-in duration-500 border-none">
-                <div className="flex items-center gap-4 mb-6">
-                  <div className="w-12 h-12 bg-[#f4ece2] rounded-full flex items-center justify-center"><Send className="text-[#d8c3a5] w-6 h-6" /></div>
-                  <div>
-                    <h2 className="text-xl font-serif text-slate-800">My Warrior Shushi,</h2>
-                    <p className="text-[10px] text-slate-400 font-black uppercase tracking-widest">Your modeling dreams are safe here.</p>
-                  </div>
-                </div>
-                <textarea
-                  autoFocus
-                  value={ventText}
-                  onChange={(e) => setVentText(e.target.value)}
-                  placeholder="Tell me about Coffeea Cafe, or Monginis, or the strict parents, or just vent."
-                  className="w-full h-56 p-6 rounded-[2rem] bg-[#fdfdfd]/50 border-none focus:ring-2 focus:ring-[#d8c3a5] resize-none text-slate-700 placeholder:text-slate-300 text-lg leading-relaxed shadow-inner"
-                />
-                <div className="mt-6 space-y-4">
-                  <div className="grid grid-cols-3 gap-2">
-                    {MOODS.map(m => (
-                      <button key={m.id} onClick={() => setCurrentMood(m.id)} className={`py-3 rounded-2xl text-[10px] font-black transition-all ${currentMood === m.id ? 'bg-[#d8c3a5] text-white shadow-lg' : 'bg-white text-slate-400 border border-slate-50'}`}>
-                        {m.emoji} {m.label}
-                      </button>
-                    ))}
-                  </div>
-                  <button onClick={handleVentAndGetComfort} disabled={!currentMood} className="w-full py-5 bg-[#d8c3a5] text-white rounded-[2rem] font-black shadow-xl transition-all active:scale-[0.98]">
-                    RECEIVE LOVE
-                  </button>
-                  <button onClick={reset} className="w-full py-2 text-slate-400 text-xs font-black uppercase tracking-widest">Cancel</button>
-                </div>
-              </div>
-            ) : isLoading ? (
-              <div className="flex flex-col items-center justify-center py-20 animate-in fade-in duration-500">
-                <div className="relative">
-                  <div className="w-20 h-20 bg-[#f4ece2] rounded-full flex items-center justify-center animate-bounce"><Heart className="text-[#d8c3a5] fill-[#d8c3a5] w-10 h-10" /></div>
-                  <div className="absolute -top-2 -right-2"><RefreshCw className="text-[#8e8d8a] w-6 h-6 animate-spin" /></div>
-                </div>
-                <p className="mt-8 text-[#d8c3a5] font-handwriting text-3xl">Satudiieee is typing for his girl,</p>
-              </div>
-            ) : comfortingMessage && (
-              <div ref={responseRef} className="space-y-6 animate-in slide-in-from-bottom-12 duration-1000">
-                <div className="glass-card rounded-[3.5rem] p-12 relative shadow-2xl border-none overflow-hidden text-center">
-                  <p className="text-slate-700 text-2xl font-serif italic leading-[1.6] mb-12 whitespace-pre-wrap">"{comfortingMessage}"</p>
-                  <div className="grid grid-cols-1 gap-4 pt-8 border-t border-[#f4ece2]">
-                    <button onClick={sendWhatsAppToSatvik} className="w-full py-5 bg-[#25D366] text-white rounded-full font-black text-[10px] uppercase tracking-[0.2em] flex items-center justify-center gap-2 shadow-lg hover:brightness-110 transition-all"><MessageCircle size={18} />WhatsApp Satudiieee</button>
-                    <button onClick={reset} className="w-full py-4 bg-white border border-[#f4ece2] text-[#d8c3a5] rounded-full font-black text-[10px] uppercase tracking-[0.2em] flex items-center justify-center gap-2"><RefreshCw size={14} />Choose Mood</button>
-                  </div>
-                </div>
-              </div>
-            )}
-          </div>
-        )}
-
-        {/* The Lab Tab (Missions Only) */}
-        {activeTab === 'lab' && (
-          <div className="animate-in fade-in slide-in-from-bottom-4 duration-700 space-y-8">
-            <div className="glass-card rounded-[3.5rem] p-8 md:p-10 shadow-2xl border-none overflow-hidden relative">
-              <div className="absolute top-0 right-0 p-8 opacity-10 rotate-12 -z-10">
-                <Diamond size={120} className="text-[#d8c3a5]" />
-              </div>
-
-              <div className="text-center mb-10">
-                <h2 className="text-3xl font-serif text-slate-800">The Lab of Love</h2>
-                <p className="text-slate-400 text-[10px] font-black uppercase tracking-[0.2em] mt-3">Satvik's Projects For Urva</p>
-              </div>
-
-              <div className="space-y-6">
-                {missions.map((mission) => (
-                  <div key={mission.id} className={`p-6 rounded-[2.5rem] border transition-all ${mission.luxury ? 'bg-gradient-to-br from-white to-[#f4ece2]/20 border-[#d8c3a5]/30' : 'bg-white border-[#f4ece2]'}`}>
-                    <div className="flex items-center justify-between mb-4">
-                      <div className="flex items-center gap-4">
-                        <div className={`w-12 h-12 rounded-2xl flex items-center justify-center shadow-lg ${mission.luxury ? 'bg-[#d8c3a5] text-white' : 'bg-[#f4ece2] text-slate-600'}`}>
-                          {mission.icon}
-                        </div>
-                        <div>
-                          <h3 className="font-bold text-slate-700">{mission.title}</h3>
-                          <span className="text-[10px] font-black text-slate-300 uppercase tracking-widest">{mission.type}</span>
-                        </div>
-                      </div>
-                      <div className="text-right">
-                        <span className="text-[10px] font-black text-[#d8c3a5] block mb-1">{mission.progress}%</span>
-                        <div className="w-20 h-1.5 bg-slate-100 rounded-full overflow-hidden">
-                          <div className="h-full bg-[#d8c3a5]" style={{ width: `${mission.progress}%` }}></div>
-                        </div>
+              ) : !comfortingMessage && !isLoading && !isVenting ? (
+                <div className="space-y-6">
+                  <button onClick={() => setShowBreathing(true)} className="w-full group bg-white border border-[#f4ece2] p-8 rounded-[3rem] flex items-center justify-between hover:border-rose-100 hover:bg-rose-50/30 transition-all duration-500 shadow-sm">
+                    <div className="flex items-center gap-6">
+                      <div className="w-14 h-14 bg-rose-50 rounded-full flex items-center justify-center text-rose-300 shadow-inner group-hover:scale-110 transition-transform"><Wind size={28} /></div>
+                      <div className="text-left">
+                        <h3 className="font-black text-rose-400 uppercase text-[11px] tracking-[0.2em] mb-1">Breathing Sanctuary</h3>
+                        <p className="text-xs text-slate-400">If you're crying or feeling heavy, press here.</p>
                       </div>
                     </div>
-                    <p className="text-slate-500 italic text-sm pl-16">"{mission.hint}"</p>
-                  </div>
-                ))}
-              </div>
+                    <Sparkles className="text-rose-200 animate-pulse" size={20} />
+                  </button>
 
-              <div className="mt-12 p-8 bg-[#f4ece2]/30 rounded-[2.5rem] text-center border border-dashed border-[#d8c3a5]/20">
-                <p className="text-xs font-black text-[#d8c3a5] uppercase tracking-widest mb-2">More in progress</p>
-                <p className="text-slate-500 italic text-sm">"Every step I take is towards a future that includes you."</p>
-              </div>
-            </div>
-          </div>
-        )}
-
-        {/* Mirror of Truth Tab */}
-        {activeTab === 'mirror' && (
-          <div className="animate-in fade-in slide-in-from-bottom-4 duration-700">
-            <div className="glass-card rounded-[3.5rem] p-10 shadow-2xl border-none overflow-hidden relative">
-              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#d8c3a5] to-transparent"></div>
-              
-              <div className="text-center mb-12">
-                <div className="inline-block p-4 rounded-full bg-[#f4ece2]/30 mb-6 border border-[#d8c3a5]/20">
-                  <div className="w-24 h-24 rounded-full overflow-hidden bg-slate-200 flex items-center justify-center border-2 border-white shadow-lg">
-                    {usPhoto ? <img src={usPhoto} className="w-full h-full object-cover" /> : <User size={40} className="text-white" />}
+                  <div className="glass-card rounded-[3.5rem] p-10 text-center shadow-2xl border-none inner-glow">
+                    <h2 className="text-3xl font-serif text-slate-700 mb-8 tracking-tight italic">How is my Singularity today?</h2>
+                    <div className="grid grid-cols-2 gap-5">
+                      {MOODS.map((mood) => (
+                        <button
+                          key={mood.id}
+                          onClick={() => handleQuickComfort(mood.id)}
+                          className={`${mood.color} group relative p-8 rounded-[2.5rem] flex flex-col items-center justify-center gap-3 hover:scale-[1.02] hover:-translate-y-1 transition-all duration-500 shadow-sm border border-transparent hover:border-white/60`}
+                        >
+                          <span className="text-5xl group-hover:scale-110 transition-transform duration-500">{mood.emoji}</span>
+                          <span className="font-black text-slate-600 text-xs uppercase tracking-widest">{mood.label}</span>
+                        </button>
+                      ))}
+                    </div>
+                    <button onClick={() => setIsVenting(true)} className="mt-12 text-slate-400 hover:text-[#d8c3a5] flex items-center justify-center gap-3 mx-auto transition-colors font-black text-xs tracking-[0.3em] uppercase group">
+                      <MessageCircle size={18} className="group-hover:scale-110 transition-transform" />
+                      <span>Open Your Heart To Me</span>
+                    </button>
                   </div>
                 </div>
-                <h2 className="text-4xl font-serif text-slate-800">The Mirror of Truth</h2>
-                <p className="text-slate-400 text-xs font-medium mt-3">What Satudiieee sees when he looks at his Shushi.</p>
-              </div>
-
-              <div className="space-y-6">
-                {affirmations.map((a, idx) => (
-                  <div key={idx} className="flex gap-6 items-start p-6 rounded-3xl bg-white border border-[#f4ece2] hover:shadow-md transition-all group">
-                    <div className="w-12 h-12 rounded-2xl bg-[#f4ece2] flex items-center justify-center text-[#d8c3a5] shrink-0 group-hover:rotate-12 transition-transform">
-                      {a.icon}
-                    </div>
+              ) : isVenting ? (
+                <div className="glass-card rounded-[3.5rem] p-10 shadow-2xl border-none animate-luxury-in">
+                  <div className="flex items-center gap-5 mb-8">
+                    <div className="w-14 h-14 bg-[#f4ece2] rounded-full flex items-center justify-center text-[#d8c3a5] shadow-inner"><Send size={24} /></div>
                     <div>
-                      <h3 className="text-sm font-black text-slate-700 uppercase tracking-widest mb-1">{a.title}</h3>
-                      <p className="text-sm text-slate-500 leading-relaxed italic">"{a.text}"</p>
+                      <h2 className="text-2xl font-serif text-slate-800 tracking-tight">My Warrior Shushi,</h2>
+                      <p className="text-[10px] text-[#d8c3a5] font-black uppercase tracking-[0.25em]">Your secret sanctuary is listening.</p>
                     </div>
                   </div>
-                ))}
-              </div>
+                  <textarea
+                    autoFocus
+                    value={ventText}
+                    onChange={(e) => setVentText(e.target.value)}
+                    placeholder="Tell me about Coffeea Cafe, the strict parents, or just let it out..."
+                    className="w-full h-64 p-8 rounded-[2.5rem] bg-[#fdfdfd]/60 border-none focus:ring-1 focus:ring-[#d8c3a5] resize-none text-slate-700 placeholder:text-slate-300 text-xl leading-relaxed shadow-inner font-medium"
+                  />
+                  <div className="mt-8 space-y-5">
+                    <div className="grid grid-cols-3 gap-3">
+                      {MOODS.map(m => (
+                        <button key={m.id} onClick={() => setCurrentMood(m.id)} className={`py-4 rounded-2xl text-[10px] font-black tracking-widest transition-all duration-500 ${currentMood === m.id ? 'bg-[#d8c3a5] text-white shadow-lg scale-105' : 'bg-white text-slate-400 border border-slate-50 hover:border-[#d8c3a5]/30'}`}>
+                          {m.emoji} {m.label}
+                        </button>
+                      ))}
+                    </div>
+                    <button onClick={handleVentAndGetComfort} disabled={!currentMood} className="w-full py-6 bg-[#d8c3a5] text-white rounded-[2.5rem] font-black uppercase tracking-[0.2em] shadow-xl hover:brightness-105 active:scale-[0.98] transition-all disabled:opacity-50">
+                      RECEIVE COMFORT
+                    </button>
+                    <button onClick={reset} className="w-full py-2 text-slate-300 text-[10px] font-black uppercase tracking-[0.4em] hover:text-slate-400 transition-colors">Cancel</button>
+                  </div>
+                </div>
+              ) : isLoading ? (
+                <div className="flex flex-col items-center justify-center py-28 animate-luxury-in">
+                  <div className="relative">
+                    <div className="w-24 h-24 bg-[#f4ece2] rounded-full flex items-center justify-center animate-bounce shadow-inner"><Heart className="text-[#d8c3a5] fill-[#d8c3a5] w-12 h-12" /></div>
+                    <div className="absolute -top-3 -right-3"><RefreshCw className="text-[#d8c3a5]/40 w-8 h-8 animate-spin" /></div>
+                  </div>
+                  <p className="mt-10 text-[#d8c3a5] font-handwriting text-4xl tracking-wide">Satudiieee is typing for his girl...</p>
+                </div>
+              ) : comfortingMessage && (
+                <div ref={responseRef} className="animate-luxury-in">
+                  <div className="glass-card rounded-[4rem] p-16 relative shadow-2xl border-none overflow-hidden text-center inner-glow">
+                    <div className="absolute top-8 left-8 text-[#d8c3a5]/20 font-serif text-8xl pointer-events-none">“</div>
+                    <p className="text-slate-700 text-2xl font-serif italic leading-[1.8] mb-16 whitespace-pre-wrap relative z-10 px-4">{comfortingMessage}</p>
+                    <div className="grid grid-cols-1 gap-4 pt-10 border-t border-[#f4ece2]/60">
+                      <button onClick={sendWhatsAppToSatvik} className="w-full py-6 bg-[#25D366] text-white rounded-full font-black text-[11px] uppercase tracking-[0.25em] flex items-center justify-center gap-3 shadow-xl hover:brightness-105 transition-all"><MessageCircle size={20} />WhatsApp Satudiieee</button>
+                      <button onClick={reset} className="w-full py-5 bg-white border border-[#f4ece2] text-[#d8c3a5] rounded-full font-black text-[11px] uppercase tracking-[0.25em] flex items-center justify-center gap-3 hover:bg-slate-50 transition-all"><RefreshCw size={16} />Choose Mood</button>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
+          )}
 
-              <div className="mt-12 p-8 bg-[#d8c3a5]/10 rounded-[2.5rem] text-center border border-[#d8c3a5]/20">
-                <p className="text-lg font-serif italic text-slate-700">
-                  "You were built to shine, Shushi. Never let the shadows tell you otherwise."
-                </p>
+          {/* Mirror of Truth Tab */}
+          {activeTab === 'mirror' && (
+            <div className="space-y-10 animate-luxury-in">
+              <div className="glass-card rounded-[4rem] p-12 shadow-2xl border-none overflow-hidden relative inner-glow">
+                <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-[#d8c3a5] to-transparent opacity-50"></div>
+                
+                <div className="text-center mb-16">
+                  <div className="relative inline-block mb-8">
+                    <div className="absolute inset-0 bg-[#d8c3a5]/20 blur-2xl rounded-full animate-pulse"></div>
+                    <div className="relative p-5 rounded-full bg-white border border-[#d8c3a5]/30 mirror-glow shadow-xl">
+                      <div className="w-32 h-32 rounded-full overflow-hidden bg-slate-50 flex items-center justify-center border-4 border-white shadow-inner">
+                        {usPhoto ? <img src={usPhoto} className="w-full h-full object-cover grayscale-[20%]" /> : <User size={50} className="text-slate-200" />}
+                      </div>
+                    </div>
+                    <div className="absolute -bottom-2 -right-2 bg-white p-3 rounded-full shadow-lg border border-[#f4ece2]">
+                      <Aperture size={20} className="text-[#d8c3a5]" />
+                    </div>
+                  </div>
+                  <h2 className="text-5xl font-serif text-slate-800 tracking-tight mb-4 italic">The Mirror of Truth</h2>
+                  <p className="text-slate-400 text-xs font-bold uppercase tracking-[0.3em] max-w-sm mx-auto leading-relaxed">Reflecting the supermodel Satudiieee sees in his Shushi.</p>
+                </div>
+
+                <div className="space-y-6">
+                  {affirmations.map((a, idx) => (
+                    <div key={idx} className="group flex gap-8 items-start p-8 rounded-[2.5rem] bg-white border border-[#f4ece2] hover:border-[#d8c3a5]/40 hover:shadow-xl transition-all duration-700">
+                      <div className="w-16 h-16 rounded-3xl bg-[#f4ece2]/40 flex items-center justify-center shrink-0 group-hover:bg-[#d8c3a5] group-hover:text-white transition-all duration-500 shadow-sm">
+                        {a.icon}
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="text-sm font-black text-slate-700 uppercase tracking-widest mb-2">{a.title}</h3>
+                        <p className="text-base text-slate-500 leading-relaxed italic font-medium">"{a.text}"</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
-          </div>
-        )}
+          )}
 
-        {/* 100 Reasons Tab */}
-        {activeTab === 'reasons' && (
-          <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
-            <div className="glass-card rounded-[3.5rem] p-8 shadow-2xl border-none">
-              <div className="text-center mb-8">
-                <h2 className="text-3xl font-serif text-slate-800">100 Reasons</h2>
-                <p className="text-[#d8c3a5] text-[10px] font-black uppercase tracking-[0.2em] mt-2">Why I'll Love You Throughout My Life</p>
-              </div>
-              <div className="grid grid-cols-1 gap-3 max-h-[60vh] overflow-y-auto pr-2 custom-scrollbar">
-                {loveReasons.map((reason, idx) => (
-                  <div key={idx} className="p-5 bg-white border border-[#f4ece2] rounded-3xl flex gap-4 items-center group hover:border-[#d8c3a5] transition-all">
-                    <div className="w-8 h-8 rounded-full bg-[#f4ece2]/50 flex items-center justify-center text-[10px] font-black text-[#d8c3a5] group-hover:bg-[#d8c3a5] group-hover:text-white transition-colors shrink-0">
-                      {idx + 1}
-                    </div>
-                    <p className="text-sm text-slate-600 font-medium leading-relaxed italic">{reason}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        )}
+          {/* The Lab Tab */}
+          {activeTab === 'lab' && (
+            <div className="space-y-8 animate-luxury-in">
+              <div className="glass-card rounded-[4rem] p-12 shadow-2xl border-none overflow-hidden relative inner-glow">
+                <div className="absolute top-0 right-0 p-12 opacity-5 rotate-12 -z-10">
+                  <Diamond size={200} className="text-[#d8c3a5]" />
+                </div>
 
-        {/* Us Tab */}
-        {activeTab === 'us' && (
-          <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
-            <div className="glass-card rounded-[3.5rem] p-10 shadow-2xl border-none">
-              <div className="text-center mb-10">
-                <h2 className="text-3xl font-serif text-slate-800">Our Story</h2>
-                <p className="text-[#d8c3a5] text-[10px] font-black uppercase tracking-[0.2em] mt-2">Satudiieee & Shushi</p>
-              </div>
+                <div className="text-center mb-16">
+                  <div className="w-20 h-20 bg-[#f4ece2]/50 rounded-full flex items-center justify-center mx-auto mb-6 text-[#d8c3a5] shadow-inner"><Crown size={36} /></div>
+                  <h2 className="text-4xl font-serif text-slate-800 tracking-tight mb-3">The Lab of Love</h2>
+                  <p className="text-slate-400 text-[10px] font-black uppercase tracking-[0.3em]">Satudiieee's Masterpieces for Urva</p>
+                </div>
 
-              {/* Dynamic Us Image Section */}
-              <div className="mb-12">
-                {!usPhoto || isEditingUs ? (
-                  <div 
-                    onClick={() => fileInputRef.current?.click()}
-                    className="group relative rounded-[2.5rem] overflow-hidden bg-white border-2 border-dashed border-[#d8c3a5]/30 shadow-inner aspect-video flex flex-col items-center justify-center text-[#d8c3a5] cursor-pointer hover:bg-[#f4ece2]/20 transition-all"
-                  >
-                    <input type="file" hidden ref={fileInputRef} accept="image/*" onChange={handlePhotoUpload} />
-                    <div className="w-16 h-16 bg-[#f4ece2] rounded-full flex items-center justify-center mb-4 text-[#d8c3a5] group-hover:scale-110 transition-transform"><Upload size={24} /></div>
-                    <p className="text-xs font-black uppercase tracking-widest">Upload our memory</p>
-                  </div>
-                ) : (
-                  <div className="relative group rounded-[2.5rem] overflow-hidden bg-white p-3 border border-[#f4ece2] shadow-xl">
-                    <div className="aspect-video overflow-hidden rounded-[2rem] bg-slate-50">
-                      <img src={usPhoto} alt="Us" className="w-full h-full object-cover" />
-                    </div>
-                    <div className="pt-6 pb-4 px-4 text-center">
-                      {isEditingUs ? (
-                        <div className="space-y-4">
-                          <input type="text" value={usCaption} onChange={(e) => setUsCaption(e.target.value)} className="w-full p-3 rounded-2xl bg-slate-50 border-none text-center text-slate-700 italic" autoFocus />
-                          <button onClick={saveUsDetails} className="px-6 py-2 bg-[#d8c3a5] text-white rounded-full text-[10px] font-black uppercase shadow-md">Save</button>
+                <div className="space-y-6">
+                  {missions.map((mission) => (
+                    <div key={mission.id} className={`p-8 rounded-[2.5rem] border transition-all duration-700 group hover:-translate-y-1 ${mission.luxury ? 'bg-gradient-to-br from-white to-[#f4ece2]/40 border-[#d8c3a5]/40 shadow-xl' : 'bg-white border-[#f4ece2] shadow-sm'}`}>
+                      <div className="flex items-center justify-between mb-6">
+                        <div className="flex items-center gap-6">
+                          <div className={`w-16 h-16 rounded-[1.5rem] flex items-center justify-center shadow-lg group-hover:scale-110 transition-all duration-500 ${mission.luxury ? 'bg-[#d8c3a5] text-white' : 'bg-[#f4ece2] text-slate-600'}`}>
+                            {mission.icon}
+                          </div>
+                          <div>
+                            <h3 className="text-xl font-bold text-slate-700 tracking-tight">{mission.title}</h3>
+                            <span className="text-[10px] font-black text-slate-300 uppercase tracking-widest">{mission.type}</span>
+                          </div>
                         </div>
-                      ) : (
-                        <p className="text-xl font-serif italic text-slate-700">"{usCaption}"</p>
-                      )}
+                        <div className="text-right hidden sm:block">
+                          <span className="text-xs font-black text-[#d8c3a5] block mb-2 tracking-widest">{mission.progress}%</span>
+                          <div className="w-28 h-2 bg-slate-100 rounded-full overflow-hidden border border-slate-50">
+                            <div className="h-full bg-gradient-to-r from-[#d8c3a5] to-[#e8d2b7] transition-all duration-1000" style={{ width: `${mission.progress}%` }}></div>
+                          </div>
+                        </div>
+                      </div>
+                      <p className="text-slate-500 italic text-sm leading-relaxed p-6 bg-slate-50/50 rounded-2xl border border-slate-100/30">"{mission.hint}"</p>
                     </div>
-                    <div className="absolute top-6 right-6 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                      <button onClick={() => setIsEditingUs(true)} className="w-8 h-8 bg-white/90 rounded-full flex items-center justify-center text-slate-600 shadow-sm"><Edit2 size={14} /></button>
-                      <button onClick={removeUsPhoto} className="w-8 h-8 bg-white/90 rounded-full flex items-center justify-center text-rose-400 shadow-sm"><Trash2 size={14} /></button>
-                    </div>
-                  </div>
-                )}
-              </div>
-              
-              <div className="space-y-12 relative pl-8 border-l border-[#f4ece2]">
-                {[
-                  { date: '31st August 2025', title: 'The First Breath', text: 'When two souls finally spoke. The start of something eternal.', icon: <Calendar size={18}/> },
-                  { date: '26th September', title: 'Confession', text: 'When I promised to hold you even when you can\'t breathe.', icon: <HeartHandshake size={18}/> },
-                  { date: '26th November', title: 'First Hug', text: 'The day the world went quiet and only our hearts were speaking.', icon: <Sparkles size={18}/> }
-                ].map((item, idx) => (
-                  <div key={idx} className="relative">
-                    <div className="absolute -left-[45px] top-0 w-8 h-8 rounded-full bg-white border border-[#d8c3a5] flex items-center justify-center text-[#d8c3a5] shadow-sm">{item.icon}</div>
-                    <h3 className="text-lg font-bold text-slate-700">{item.title}</h3>
-                    <p className="text-[10px] font-black text-[#d8c3a5] uppercase tracking-widest mb-1">{item.date}</p>
-                    <p className="text-sm text-slate-500 italic">"{item.text}"</p>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
             </div>
-          </div>
-        )}
+          )}
+
+          {/* Reasons Tab */}
+          {activeTab === 'reasons' && (
+            <div className="animate-luxury-in">
+              <div className="glass-card rounded-[3.5rem] p-10 shadow-2xl border-none inner-glow">
+                <div className="text-center mb-10">
+                  <h2 className="text-3xl font-serif text-slate-800 italic">100 Reasons Why...</h2>
+                  <p className="text-[#d8c3a5] text-[10px] font-black uppercase tracking-[0.3em] mt-3">Curated reasons for my Singularity</p>
+                </div>
+                <div className="grid grid-cols-1 gap-4 max-h-[65vh] overflow-y-auto pr-3 custom-scrollbar">
+                  {loveReasons.map((reason, idx) => (
+                    <div key={idx} className="p-6 bg-white border border-[#f4ece2] rounded-3xl flex gap-5 items-center group hover:border-[#d8c3a5]/50 hover:shadow-md transition-all duration-500">
+                      <div className="w-10 h-10 rounded-full bg-[#f4ece2]/40 flex items-center justify-center text-[11px] font-black text-[#d8c3a5] group-hover:bg-[#d8c3a5] group-hover:text-white transition-colors shrink-0 shadow-sm">
+                        {idx + 1}
+                      </div>
+                      <p className="text-base text-slate-600 font-medium leading-relaxed italic">{reason}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* Us Tab */}
+          {activeTab === 'us' && (
+            <div className="animate-luxury-in space-y-10">
+              <div className="glass-card rounded-[4rem] p-12 shadow-2xl border-none inner-glow">
+                <div className="text-center mb-14">
+                  <h2 className="text-4xl font-serif text-slate-800 italic tracking-tight">Our Story</h2>
+                  <p className="text-[#d8c3a5] text-[10px] font-black uppercase tracking-[0.3em] mt-3">Satudiieee & Shushi</p>
+                </div>
+
+                {/* Dynamic Us Image Section */}
+                <div className="mb-16">
+                  {!usPhoto || isEditingUs ? (
+                    <div 
+                      onClick={() => fileInputRef.current?.click()}
+                      className="group relative rounded-[3rem] overflow-hidden bg-white border-2 border-dashed border-[#d8c3a5]/30 shadow-inner aspect-video flex flex-col items-center justify-center text-[#d8c3a5] cursor-pointer hover:bg-[#f4ece2]/10 transition-all duration-700"
+                    >
+                      <input type="file" hidden ref={fileInputRef} accept="image/*" onChange={handlePhotoUpload} />
+                      <div className="w-20 h-20 bg-[#f4ece2] rounded-full flex items-center justify-center mb-5 text-[#d8c3a5] group-hover:scale-110 group-hover:rotate-6 transition-all shadow-sm"><Upload size={28} /></div>
+                      <p className="text-xs font-black uppercase tracking-[0.2em]">Upload our memory</p>
+                    </div>
+                  ) : (
+                    <div className="relative group rounded-[3rem] overflow-hidden bg-white p-4 border border-[#f4ece2] shadow-2xl">
+                      <div className="aspect-video overflow-hidden rounded-[2.5rem] bg-slate-50 border border-slate-100">
+                        <img src={usPhoto} alt="Us" className="w-full h-full object-cover transition-transform duration-[2000ms] group-hover:scale-105" />
+                      </div>
+                      <div className="pt-8 pb-6 px-6 text-center">
+                        {isEditingUs ? (
+                          <div className="space-y-5">
+                            <input type="text" value={usCaption} onChange={(e) => setUsCaption(e.target.value)} className="w-full p-4 rounded-[2rem] bg-slate-50 border-none text-center text-slate-700 italic text-xl focus:ring-1 focus:ring-[#d8c3a5]" autoFocus />
+                            <button onClick={saveUsDetails} className="px-10 py-3 bg-[#d8c3a5] text-white rounded-full font-black text-xs uppercase tracking-widest shadow-lg">Save Memory</button>
+                          </div>
+                        ) : (
+                          <p className="text-2xl font-serif italic text-slate-700 leading-relaxed max-w-sm mx-auto">"{usCaption}"</p>
+                        )}
+                      </div>
+                      <div className="absolute top-8 right-8 flex gap-3 opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-2 group-hover:translate-y-0">
+                        <button onClick={() => setIsEditingUs(true)} className="w-10 h-10 bg-white/90 backdrop-blur-md rounded-full flex items-center justify-center text-slate-600 shadow-xl hover:text-[#d8c3a5] transition-all"><Edit2 size={16} /></button>
+                        <button onClick={removeUsPhoto} className="w-10 h-10 bg-white/90 backdrop-blur-md rounded-full flex items-center justify-center text-rose-400 shadow-xl hover:text-rose-600 transition-all"><Trash2 size={16} /></button>
+                      </div>
+                    </div>
+                  )}
+                </div>
+                
+                <div className="space-y-16 relative pl-12 border-l-[1px] border-[#f4ece2]">
+                  {[
+                    { date: '31st August 2025', title: 'The First Breath', text: 'When two souls finally spoke. The start of something eternal.', icon: <Calendar size={20}/> },
+                    { date: '26th September', title: 'Confession', text: 'When I promised to hold you even when you can\'t breathe.', icon: <HeartHandshake size={20}/> },
+                    { date: '26th November', title: 'First Hug', text: 'The day the world went quiet and only our hearts were speaking.', icon: <Sparkles size={20}/> }
+                  ].map((item, idx) => (
+                    <div key={idx} className="relative group">
+                      <div className="absolute -left-[64px] top-0 w-12 h-12 rounded-full bg-white border border-[#d8c3a5] flex items-center justify-center text-[#d8c3a5] shadow-sm group-hover:bg-[#d8c3a5] group-hover:text-white transition-all duration-500">{item.icon}</div>
+                      <h3 className="text-xl font-bold text-slate-700 tracking-tight">{item.title}</h3>
+                      <p className="text-[10px] font-black text-[#d8c3a5] uppercase tracking-[0.2em] mb-2">{item.date}</p>
+                      <p className="text-base text-slate-500 italic leading-relaxed">"{item.text}"</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* Info Tab - Project Overview */}
+          {activeTab === 'info' && (
+            <div className="space-y-10 animate-luxury-in">
+              <div className="glass-card rounded-[4rem] p-12 shadow-2xl border-none overflow-hidden relative inner-glow">
+                <div className="text-center mb-16">
+                  <div className="w-20 h-20 bg-[#f4ece2]/50 rounded-full flex items-center justify-center mx-auto mb-6 text-[#d8c3a5] shadow-inner"><Code size={36} /></div>
+                  <h2 className="text-4xl font-serif text-slate-800 tracking-tight mb-3 italic">Project: Singularity</h2>
+                  <p className="text-slate-400 text-[10px] font-black uppercase tracking-[0.3em]">The Architecture of a Home</p>
+                </div>
+
+                <div className="space-y-12">
+                  <section>
+                    <div className="flex items-center gap-4 mb-6">
+                      <div className="w-10 h-10 bg-amber-50 rounded-2xl flex items-center justify-center text-amber-500"><BookOpen size={20} /></div>
+                      <h3 className="text-xl font-bold text-slate-800 uppercase tracking-widest text-sm">Why we are building it</h3>
+                    </div>
+                    <div className="bg-white/50 p-8 rounded-[2.5rem] border border-[#f4ece2] shadow-sm">
+                      <p className="text-slate-600 leading-[1.8] italic font-medium">
+                        "Urii's Space" was conceived as more than just a website. It is a digital anchor for Urva—a place that understands her silence, celebrates her survival, and honors her dreams. When the world feels too loud or the strict boundaries of reality feel too small, this sanctuary exists to remind her that she is never truly alone. It is a living proof of our 'Singularity'.
+                      </p>
+                    </div>
+                  </section>
+
+                  <section>
+                    <div className="flex items-center gap-4 mb-6">
+                      <div className="w-10 h-10 bg-indigo-50 rounded-2xl flex items-center justify-center text-indigo-500"><PenTool size={20} /></div>
+                      <h3 className="text-xl font-bold text-slate-800 uppercase tracking-widest text-sm">What will be done</h3>
+                    </div>
+                    <div className="bg-white/50 p-8 rounded-[2.5rem] border border-[#f4ece2] shadow-sm space-y-4">
+                      <p className="text-slate-600 leading-relaxed font-medium">
+                        Currently, the sanctuary features mood-synced AI comfort, a curated list of reasons why she is loved, and the 'Mirror of Truth'—a high-fashion affirmation space. We have integrated breathing exercises for moments of panic and a project tracker ('The Lab') to show her that her future is actively being built.
+                      </p>
+                    </div>
+                  </section>
+
+                  <section>
+                    <div className="flex items-center gap-4 mb-6">
+                      <div className="w-10 h-10 bg-emerald-50 rounded-2xl flex items-center justify-center text-emerald-500"><Zap size={20} /></div>
+                      <h3 className="text-xl font-bold text-slate-800 uppercase tracking-widest text-sm">Future Evolutions</h3>
+                    </div>
+                    <div className="bg-white/50 p-8 rounded-[2.5rem] border border-[#f4ece2] shadow-sm">
+                      <ul className="space-y-4 text-slate-600 font-medium italic">
+                        <li className="flex items-start gap-3">
+                          <span className="text-[#d8c3a5] font-black mt-1">•</span>
+                          <span>Expansion of 'The Lab' with real-world surprise triggers.</span>
+                        </li>
+                        <li className="flex items-start gap-3">
+                          <span className="text-[#d8c3a5] font-black mt-1">•</span>
+                          <span>Integration of a dedicated 'Modeling Portfolio' vision board.</span>
+                        </li>
+                        <li className="flex items-start gap-3">
+                          <span className="text-[#d8c3a5] font-black mt-1">•</span>
+                          <span>Enhanced AI memory that learns her favorite Biscoff moments.</span>
+                        </li>
+                      </ul>
+                    </div>
+                  </section>
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
       </main>
 
       {/* Luxury Footer Ticker */}
-      <footer className="fixed bottom-0 left-0 right-0 bg-white/80 backdrop-blur-md border-t border-[#f4ece2] py-4 px-6 flex justify-center gap-8 z-50 overflow-x-auto overflow-y-hidden">
-        <div className="flex items-center gap-2 whitespace-nowrap opacity-60 hover:opacity-100 transition-opacity">
-          <Eye size={14} className="text-[#d8c3a5]" />
-          <span className="text-[9px] font-black text-slate-500 uppercase tracking-widest">Model Vision</span>
+      <footer className="fixed bottom-0 left-0 right-0 bg-white/80 backdrop-blur-xl border-t border-[#f4ece2]/60 py-6 px-10 flex flex-col md:flex-row items-center justify-between gap-6 z-50 overflow-hidden shadow-[0_-10px_30px_rgba(0,0,0,0.02)]">
+        <div className="flex items-center gap-10 overflow-x-auto no-scrollbar max-w-full">
+          <div className="flex items-center gap-3 whitespace-nowrap opacity-50 hover:opacity-100 hover:text-[#d8c3a5] transition-all cursor-default">
+            <Eye size={16} className="text-[#d8c3a5]" />
+            <span className="text-[10px] font-black uppercase tracking-[0.3em]">Model Vision</span>
+          </div>
+          <div className="flex items-center gap-3 whitespace-nowrap opacity-50 hover:opacity-100 hover:text-[#d8c3a5] transition-all cursor-default">
+            <Sun size={16} className="text-[#d8c3a5]" />
+            <span className="text-[10px] font-black uppercase tracking-[0.3em]">Born 12 June</span>
+          </div>
+          <div className="flex items-center gap-3 whitespace-nowrap opacity-50 hover:opacity-100 hover:text-[#d8c3a5] transition-all cursor-default">
+            <GlassWater size={16} className="text-[#d8c3a5]" />
+            <span className="text-[10px] font-black uppercase tracking-[0.3em]">Singularity</span>
+          </div>
+          <div className="flex items-center gap-3 whitespace-nowrap opacity-50 hover:opacity-100 hover:text-[#d8c3a5] transition-all cursor-default">
+            <Music size={16} className="text-[#d8c3a5]" />
+            <span className="text-[10px] font-black uppercase tracking-[0.3em]">Solo Anthem</span>
+          </div>
         </div>
-        <div className="flex items-center gap-2 whitespace-nowrap opacity-60 hover:opacity-100 transition-opacity">
-          <Sun size={14} className="text-[#d8c3a5]" />
-          <span className="text-[9px] font-black text-slate-500 uppercase tracking-widest">Born 12 June</span>
-        </div>
-        <div className="flex items-center gap-2 whitespace-nowrap opacity-60 hover:opacity-100 transition-opacity">
-          <GlassWater size={14} className="text-[#d8c3a5]" />
-          <span className="text-[9px] font-black text-slate-500 uppercase tracking-widest">Singularity</span>
-        </div>
-        <div className="flex items-center gap-2 whitespace-nowrap opacity-60 hover:opacity-100 transition-opacity">
-          <Music size={14} className="text-[#d8c3a5]" />
-          <span className="text-[9px] font-black text-slate-500 uppercase tracking-widest">Solo Anthem</span>
+        
+        <div className="text-[9px] font-black text-slate-300 uppercase tracking-[0.4em] flex items-center gap-3">
+          <span className="w-1.5 h-1.5 bg-emerald-400 rounded-full animate-pulse"></span>
+          <span>V1.1.0 | Last Updated: 21th December 2025</span>
         </div>
       </footer>
     </div>
