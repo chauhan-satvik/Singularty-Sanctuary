@@ -33,6 +33,14 @@
       .animate-luxury-in {
         animation: fade-slide-up 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
       }
+
+      @keyframes spin-slow {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+      }
+      .animate-spin-slow {
+        animation: spin-slow 12s linear infinite;
+      }
       
       .glass-card {
         background: rgba(20, 20, 20, 0.7);

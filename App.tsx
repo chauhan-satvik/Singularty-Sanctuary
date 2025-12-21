@@ -1,15 +1,15 @@
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { Mood } from './types';
 import { MOODS } from './constants';
 import { generateComfortResponse } from './services/geminiService';
 import { 
   Heart, RefreshCw, MessageCircle, Sparkles, Send, 
   Wind, Camera, Anchor, Eye, Info, Calendar, 
-  User, Music, Upload, Edit2, Trash2, HeartHandshake, 
-  Star, Zap, Moon, ScrollText, Gift, Rocket, Lock, 
-  ShieldCheck, Crown, Diamond, MoveRight, Phone,
-  GlassWater, Sun, Trophy, Aperture, Code, BookOpen, PenTool
+  User, Upload, Edit2, Trash2, HeartHandshake, 
+  Star, Zap, ShieldCheck, Crown, Diamond, Aperture, 
+  Code, BookOpen, PenTool, Clock, Layers, MapPin,
+  Trophy, ScrollText, CheckCircle2, Rocket, Cpu, Workflow
 } from 'lucide-react';
 
 const App: React.FC = () => {
@@ -21,6 +21,14 @@ const App: React.FC = () => {
   const [isVenting, setIsVenting] = useState(false);
   const [showBreathing, setShowBreathing] = useState(false);
   
+  // Live Eternity Counter State
+  const [timeSinceStart, setTimeSinceStart] = useState({
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0
+  });
+
   // Us Tab State
   const [usPhoto, setUsPhoto] = useState<string | null>(localStorage.getItem('us_photo'));
   const [usCaption, setUsCaption] = useState<string>(localStorage.getItem('us_caption') || 'Our Singularity Moment');
@@ -28,6 +36,27 @@ const App: React.FC = () => {
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const responseRef = useRef<HTMLDivElement>(null);
+
+  // Live Eternity Counter Logic
+  useEffect(() => {
+    const start = new Date('2025-08-31T00:00:00');
+    
+    const updateCounter = () => {
+      const now = new Date();
+      const diff = now.getTime() - start.getTime();
+      
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / 1000 / 60) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+      
+      setTimeSinceStart({ days, hours, minutes, seconds });
+    };
+
+    updateCounter();
+    const interval = setInterval(updateCounter, 1000);
+    return () => clearInterval(interval);
+  }, []);
 
   useEffect(() => {
     if (comfortingMessage && responseRef.current) {
@@ -129,7 +158,6 @@ const App: React.FC = () => {
     }
   ];
 
-  // Mirror of Truth Affirmations
   const affirmations = [
     { icon: <Camera size={22} className="text-[#d8c3a5]" />, title: "The Runway Star", text: "Every time you walk, the world stops to watch. Your presence is editorial, and your confidence is your best outfit." },
     { icon: <Star size={22} className="text-[#d8c3a5]" />, title: "The Constellation", text: "The 6 moles on your face aren't just marks. They are stars I've counted a thousand times to find my way back to love." },
@@ -280,8 +308,8 @@ const App: React.FC = () => {
         <h1 className="text-6xl md:text-8xl font-handwriting text-[#d8c3a5] mb-2 drop-shadow-lg hover:scale-[1.02] transition-transform">Urii's Space</h1>
         <p className="text-slate-500 font-medium text-sm tracking-wide">Every heartbeat of Satudiieee belongs to you.</p>
 
-        {/* Navigation Tabs */}
-        <nav className="flex flex-wrap justify-center gap-3 mt-10 px-2">
+        {/* Symmetric Navigation Grid */}
+        <nav className="grid grid-cols-3 md:flex md:flex-wrap justify-center gap-2 md:gap-3 mt-10 px-2 w-full max-w-xl mx-auto">
           {[
             { id: 'sanctuary', icon: <Anchor size={18}/>, label: 'Sanctuary' },
             { id: 'lab', icon: <Crown size={18}/>, label: 'The Lab' },
@@ -293,10 +321,10 @@ const App: React.FC = () => {
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id as any)}
-              className={`flex items-center gap-2 px-4 md:px-7 py-4 rounded-full text-[11px] md:text-xs font-black uppercase tracking-[0.2em] transition-all duration-500 ${activeTab === tab.id ? 'bg-[#d8c3a5] text-[#0c0c0c] shadow-[0_15px_30px_-10px_rgba(216,195,165,0.3)] scale-105' : 'bg-[#181818] text-slate-500 border border-[#d8c3a5]/10 hover:border-[#d8c3a5]/40 hover:bg-[#202020]'}`}
+              className={`flex flex-col md:flex-row items-center justify-center gap-2 px-3 md:px-7 py-4 md:py-4 rounded-3xl md:rounded-full text-[10px] md:text-xs font-black uppercase tracking-[0.1em] md:tracking-[0.2em] transition-all duration-500 ${activeTab === tab.id ? 'bg-[#d8c3a5] text-[#0c0c0c] shadow-[0_15px_30px_-10px_rgba(216,195,165,0.3)] scale-105' : 'bg-[#181818] text-slate-500 border border-[#d8c3a5]/10 hover:border-[#d8c3a5]/40 hover:bg-[#202020]'}`}
             >
               <span className="transition-transform duration-500 group-hover:rotate-12">{tab.icon}</span>
-              <span className="hidden sm:inline">{tab.label}</span>
+              <span className="text-[9px] md:text-xs text-center">{tab.label}</span>
             </button>
           ))}
         </nav>
@@ -347,7 +375,7 @@ const App: React.FC = () => {
                         </button>
                       ))}
                     </div>
-                    <button onClick={() => setIsVenting(true)} className="mt-12 text-slate-500 hover:text-[#d8c3a5] flex items-center justify-center gap-3 mx-auto transition-colors font-black text-xs tracking-[0.3em] uppercase group">
+                    <button onClick={() => setIsVenting(true)} className="mt-12 text-slate-400 hover:text-[#d8c3a5] flex items-center justify-center gap-3 mx-auto transition-colors font-black text-xs tracking-[0.3em] uppercase group">
                       <MessageCircle size={18} className="group-hover:scale-110 transition-transform" />
                       <span>Open Your Heart To Me</span>
                     </button>
@@ -445,20 +473,128 @@ const App: React.FC = () => {
             </div>
           )}
 
-          {/* The Lab Tab - REFECTORED FOR RESPONSIVENESS */}
+          {/* Us Tab - LIVE TIMER & ARCHIVE */}
+          {activeTab === 'us' && (
+            <div className="animate-luxury-in space-y-12 pb-12">
+              {/* Header: The Singularity Live Clock */}
+              <div className="glass-card rounded-[4rem] p-10 shadow-2xl border-none relative overflow-hidden group">
+                <div className="absolute -right-20 -top-20 w-64 h-64 bg-[#d8c3a5]/5 rounded-full blur-[80px] -z-10 group-hover:bg-[#d8c3a5]/10 transition-all duration-1000"></div>
+                <div className="flex flex-col items-center text-center">
+                  <div className="w-16 h-16 bg-[#181818] rounded-full flex items-center justify-center text-[#d8c3a5] shadow-xl border border-[#d8c3a5]/10 mb-6">
+                    <Clock size={28} className="animate-pulse" />
+                  </div>
+                  <h2 className="text-[10px] font-black uppercase tracking-[0.5em] text-[#d8c3a5]/60 mb-6">Days of Singularity</h2>
+                  
+                  <div className="grid grid-cols-4 gap-4 md:gap-8 mb-4">
+                    <div className="flex flex-col items-center">
+                      <span className="text-4xl md:text-6xl font-serif text-white italic">{timeSinceStart.days}</span>
+                      <span className="text-[9px] font-black uppercase tracking-widest text-slate-600">Days</span>
+                    </div>
+                    <div className="flex flex-col items-center">
+                      <span className="text-4xl md:text-6xl font-serif text-white italic">{timeSinceStart.hours}</span>
+                      <span className="text-[9px] font-black uppercase tracking-widest text-slate-600">Hours</span>
+                    </div>
+                    <div className="flex flex-col items-center">
+                      <span className="text-4xl md:text-6xl font-serif text-white italic">{timeSinceStart.minutes}</span>
+                      <span className="text-[9px] font-black uppercase tracking-widest text-slate-600">Mins</span>
+                    </div>
+                    <div className="flex flex-col items-center">
+                      <span className="text-4xl md:text-6xl font-serif text-white italic">{timeSinceStart.seconds}</span>
+                      <span className="text-[9px] font-black uppercase tracking-widest text-slate-600">Secs</span>
+                    </div>
+                  </div>
+                  
+                  <p className="text-slate-500 text-[10px] font-bold uppercase tracking-widest mt-4 italic">Our existence synchronized since 31/08/2025</p>
+                </div>
+              </div>
+
+              {/* Dynamic Us Image Section */}
+              <div className="glass-card rounded-[4rem] p-8 md:p-12 shadow-2xl border-none relative overflow-hidden">
+                <div className="flex items-center gap-4 mb-10">
+                    <div className="w-10 h-10 bg-[#181818] rounded-2xl flex items-center justify-center text-[#d8c3a5]"><Layers size={20} /></div>
+                    <h2 className="text-xl font-serif text-white italic tracking-tight">The Memory Archive</h2>
+                </div>
+                <div className="relative">
+                  {!usPhoto || isEditingUs ? (
+                    <div onClick={() => fileInputRef.current?.click()} className="group relative rounded-[3.5rem] overflow-hidden bg-[#181818] border-2 border-dashed border-[#d8c3a5]/20 shadow-inner aspect-[4/5] md:aspect-video flex flex-col items-center justify-center text-[#d8c3a5] cursor-pointer hover:bg-[#202020] transition-all duration-700">
+                      <input type="file" hidden ref={fileInputRef} accept="image/*" onChange={handlePhotoUpload} />
+                      <div className="w-20 h-20 bg-[#d8c3a5]/5 rounded-full flex items-center justify-center mb-5 shadow-sm transition-transform group-hover:scale-110"><Upload size={28} /></div>
+                      <p className="text-xs font-black uppercase tracking-[0.2em]">Add to our story</p>
+                    </div>
+                  ) : (
+                    <div className="relative group rounded-[3.5rem] overflow-hidden bg-[#1a1a1a] p-3 md:p-5 border border-[#d8c3a5]/10 shadow-2xl">
+                      <div className="aspect-[4/5] md:aspect-video overflow-hidden rounded-[2.8rem] bg-[#0c0c0c] border border-[#d8c3a5]/10 relative">
+                        <img src={usPhoto} alt="Us" className="w-full h-full object-cover transition-transform duration-[4000ms] group-hover:scale-110 opacity-90 group-hover:opacity-100" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-[#0c0c0c] via-transparent to-transparent opacity-60"></div>
+                      </div>
+                      <div className="pt-10 pb-8 px-8 text-center">
+                        {isEditingUs ? (
+                          <div className="space-y-5">
+                            <input type="text" value={usCaption} onChange={(e) => setUsCaption(e.target.value)} className="w-full p-4 rounded-[2rem] bg-[#121212] border-none text-center text-slate-100 italic text-xl focus:ring-1 focus:ring-[#d8c3a5]" autoFocus />
+                            <div className="flex justify-center gap-3">
+                                <button onClick={saveUsDetails} className="px-10 py-3 bg-[#d8c3a5] text-[#0c0c0c] rounded-full font-black text-xs uppercase tracking-widest shadow-lg">Preserve</button>
+                                <button onClick={() => setIsEditingUs(false)} className="px-6 py-3 bg-[#2a2a2a] text-slate-400 rounded-full font-black text-xs uppercase tracking-widest">Cancel</button>
+                            </div>
+                          </div>
+                        ) : (
+                          <div className="relative">
+                            <p className="text-2xl md:text-3xl font-serif italic text-white leading-relaxed max-w-sm mx-auto">"{usCaption}"</p>
+                            <div className="mt-4 flex items-center justify-center gap-2 text-[#d8c3a5]/40">
+                                <MapPin size={12} />
+                                <span className="text-[10px] font-black uppercase tracking-[0.2em]">Coffeea Cafe & Beyond</span>
+                            </div>
+                          </div>
+                        )}
+                      </div>
+                      <div className="absolute top-10 right-10 flex gap-3 opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-2 group-hover:translate-y-0">
+                        <button onClick={() => setIsEditingUs(true)} className="w-12 h-12 bg-[#181818]/90 backdrop-blur-md rounded-full flex items-center justify-center text-slate-400 shadow-xl hover:text-[#d8c3a5] transition-all border border-[#d8c3a5]/10"><Edit2 size={18} /></button>
+                        <button onClick={removeUsPhoto} className="w-12 h-12 bg-[#181818]/90 backdrop-blur-md rounded-full flex items-center justify-center text-rose-500 shadow-xl hover:text-rose-400 transition-all border border-rose-500/10"><Trash2 size={18} /></button>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              {/* Relationship Timeline */}
+              <div className="glass-card rounded-[4rem] p-12 shadow-2xl border-none">
+                <div className="flex items-center gap-4 mb-12">
+                    <div className="w-10 h-10 bg-[#181818] rounded-2xl flex items-center justify-center text-[#d8c3a5]"><Calendar size={20} /></div>
+                    <h2 className="text-xl font-serif text-white italic tracking-tight">Timeline of Us</h2>
+                </div>
+                <div className="space-y-16 relative pl-12 border-l-[1px] border-[#d8c3a5]/10">
+                  {[
+                    { date: '31st August 2025', title: 'The First Breath', text: 'When two souls finally spoke. The start of something eternal.', icon: <Calendar size={20}/> },
+                    { date: '26th September 2025', title: 'Confession', text: 'When I promised to hold you even when you can\'t breathe.', icon: <HeartHandshake size={20}/> },
+                    { date: '26th November 2025', title: 'First Hug', text: 'The day the world went quiet and only our hearts were speaking.', icon: <Sparkles size={20}/> }
+                  ].map((item, idx) => (
+                    <div key={idx} className="relative group">
+                      <div className="absolute -left-[64px] top-0 w-12 h-12 rounded-full bg-[#0c0c0c] border border-[#d8c3a5]/20 flex items-center justify-center text-[#d8c3a5] shadow-sm group-hover:bg-[#d8c3a5] group-hover:text-[#0c0c0c] transition-all duration-500 z-10 group-hover:scale-110">
+                        {item.icon}
+                      </div>
+                      <div className="transition-all duration-500 group-hover:translate-x-2">
+                        <h3 className="text-xl font-bold text-white tracking-tight group-hover:text-[#d8c3a5] transition-colors">{item.title}</h3>
+                        <p className="text-[10px] font-black text-[#d8c3a5]/60 uppercase tracking-[0.25em] mb-3">{item.date}</p>
+                        <p className="text-base text-slate-400 italic leading-relaxed max-w-sm">"{item.text}"</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* Lab Tab */}
           {activeTab === 'lab' && (
             <div className="space-y-8 animate-luxury-in">
               <div className="glass-card rounded-[4rem] p-8 md:p-12 shadow-2xl border-none overflow-hidden relative inner-glow">
                 <div className="absolute top-0 right-0 p-12 opacity-5 rotate-12 -z-10">
                   <Diamond size={200} className="text-[#d8c3a5]" />
                 </div>
-
                 <div className="text-center mb-12 md:mb-16">
                   <div className="w-16 h-16 md:w-20 md:h-20 bg-[#d8c3a5]/10 rounded-full flex items-center justify-center mx-auto mb-6 text-[#d8c3a5] shadow-inner"><Crown size={32} /></div>
                   <h2 className="text-3xl md:text-4xl font-serif text-white tracking-tight mb-3 italic">The Lab of Love</h2>
                   <p className="text-slate-500 text-[9px] md:text-[10px] font-black uppercase tracking-[0.3em]">Satudiieee's Masterpieces for Urva</p>
                 </div>
-
                 <div className="space-y-6">
                   {missions.map((mission) => (
                     <div key={mission.id} className={`p-6 md:p-8 rounded-[2rem] md:rounded-[2.5rem] border transition-all duration-700 group hover:-translate-y-1 ${mission.luxury ? 'bg-gradient-to-br from-[#1a1a1a] to-[#25201a] border-[#d8c3a5]/30 shadow-2xl' : 'bg-[#1a1a1a] border-[#d8c3a5]/10 shadow-sm'}`}>
@@ -477,8 +613,6 @@ const App: React.FC = () => {
                             </div>
                           </div>
                         </div>
-                        
-                        {/* Progress Tracker - Responsive visibility and sizing */}
                         <div className="flex flex-col items-start sm:items-end gap-2">
                           <span className="text-[10px] font-black text-[#d8c3a5] tracking-widest uppercase">{mission.progress}% Progress</span>
                           <div className="w-full sm:w-28 md:w-36 h-2 bg-[#121212] rounded-full overflow-hidden border border-[#d8c3a5]/5 shadow-inner">
@@ -486,7 +620,6 @@ const App: React.FC = () => {
                           </div>
                         </div>
                       </div>
-                      
                       <div className="p-5 md:p-6 bg-[#121212]/40 rounded-2xl border border-[#d8c3a5]/5 text-slate-400">
                         <p className="italic text-sm leading-relaxed font-medium">"{mission.hint}"</p>
                       </div>
@@ -519,124 +652,104 @@ const App: React.FC = () => {
             </div>
           )}
 
-          {/* Us Tab */}
-          {activeTab === 'us' && (
-            <div className="animate-luxury-in space-y-10">
-              <div className="glass-card rounded-[4rem] p-12 shadow-2xl border-none inner-glow">
-                <div className="text-center mb-14">
-                  <h2 className="text-4xl font-serif text-white italic tracking-tight">Our Story</h2>
-                  <p className="text-[#d8c3a5]/70 text-[10px] font-black uppercase tracking-[0.3em] mt-3">Satudiieee & Shushi</p>
-                </div>
-
-                {/* Dynamic Us Image Section */}
-                <div className="mb-16">
-                  {!usPhoto || isEditingUs ? (
-                    <div 
-                      onClick={() => fileInputRef.current?.click()}
-                      className="group relative rounded-[3rem] overflow-hidden bg-[#181818] border-2 border-dashed border-[#d8c3a5]/20 shadow-inner aspect-video flex flex-col items-center justify-center text-[#d8c3a5] cursor-pointer hover:bg-[#202020] transition-all duration-700"
-                    >
-                      <input type="file" hidden ref={fileInputRef} accept="image/*" onChange={handlePhotoUpload} />
-                      <div className="w-20 h-20 bg-[#d8c3a5]/5 rounded-full flex items-center justify-center mb-5 text-[#d8c3a5] group-hover:scale-110 group-hover:rotate-6 transition-all shadow-sm"><Upload size={28} /></div>
-                      <p className="text-xs font-black uppercase tracking-[0.2em]">Upload our memory</p>
-                    </div>
-                  ) : (
-                    <div className="relative group rounded-[3rem] overflow-hidden bg-[#1a1a1a] p-4 border border-[#d8c3a5]/10 shadow-2xl">
-                      <div className="aspect-video overflow-hidden rounded-[2.5rem] bg-[#0c0c0c] border border-[#d8c3a5]/10">
-                        <img src={usPhoto} alt="Us" className="w-full h-full object-cover transition-transform duration-[2000ms] group-hover:scale-105 opacity-80 group-hover:opacity-100" />
-                      </div>
-                      <div className="pt-8 pb-6 px-6 text-center">
-                        {isEditingUs ? (
-                          <div className="space-y-5">
-                            <input type="text" value={usCaption} onChange={(e) => setUsCaption(e.target.value)} className="w-full p-4 rounded-[2rem] bg-[#121212] border-none text-center text-slate-100 italic text-xl focus:ring-1 focus:ring-[#d8c3a5]" autoFocus />
-                            <button onClick={saveUsDetails} className="px-10 py-3 bg-[#d8c3a5] text-[#0c0c0c] rounded-full font-black text-xs uppercase tracking-widest shadow-lg">Save Memory</button>
-                          </div>
-                        ) : (
-                          <p className="text-2xl font-serif italic text-slate-100 leading-relaxed max-w-sm mx-auto">"{usCaption}"</p>
-                        )}
-                      </div>
-                      <div className="absolute top-8 right-8 flex gap-3 opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-2 group-hover:translate-y-0">
-                        <button onClick={() => setIsEditingUs(true)} className="w-10 h-10 bg-[#181818]/90 backdrop-blur-md rounded-full flex items-center justify-center text-slate-400 shadow-xl hover:text-[#d8c3a5] transition-all"><Edit2 size={16} /></button>
-                        <button onClick={removeUsPhoto} className="w-10 h-10 bg-[#181818]/90 backdrop-blur-md rounded-full flex items-center justify-center text-rose-500 shadow-xl hover:text-rose-400 transition-all"><Trash2 size={16} /></button>
-                      </div>
-                    </div>
-                  )}
-                </div>
-                
-                <div className="space-y-16 relative pl-12 border-l-[1px] border-[#d8c3a5]/10">
-                  {[
-                    { date: '31st August 2025', title: 'The First Breath', text: 'When two souls finally spoke. The start of something eternal.', icon: <Calendar size={20}/> },
-                    { date: '26th September', title: 'Confession', text: 'When I promised to hold you even when you can\'t breathe.', icon: <HeartHandshake size={20}/> },
-                    { date: '26th November', title: 'First Hug', text: 'The day the world went quiet and only our hearts were speaking.', icon: <Sparkles size={20}/> }
-                  ].map((item, idx) => (
-                    <div key={idx} className="relative group">
-                      <div className="absolute -left-[64px] top-0 w-12 h-12 rounded-full bg-[#181818] border border-[#d8c3a5]/20 flex items-center justify-center text-[#d8c3a5] shadow-sm group-hover:bg-[#d8c3a5] group-hover:text-[#0c0c0c] transition-all duration-500">{item.icon}</div>
-                      <h3 className="text-xl font-bold text-slate-100 tracking-tight">{item.title}</h3>
-                      <p className="text-[10px] font-black text-[#d8c3a5] uppercase tracking-[0.2em] mb-2">{item.date}</p>
-                      <p className="text-base text-slate-500 italic leading-relaxed">"{item.text}"</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          )}
-
-          {/* Info Tab - Project Overview */}
+          {/* Enhanced Info Tab (The Grand Vision) */}
           {activeTab === 'info' && (
-            <div className="space-y-10 animate-luxury-in">
+            <div className="space-y-12 animate-luxury-in pb-12">
               <div className="glass-card rounded-[4rem] p-12 shadow-2xl border-none overflow-hidden relative inner-glow">
-                <div className="text-center mb-16">
-                  <div className="w-20 h-20 bg-[#d8c3a5]/10 rounded-full flex items-center justify-center mx-auto mb-6 text-[#d8c3a5] shadow-inner"><Code size={36} /></div>
-                  <h2 className="text-4xl font-serif text-white tracking-tight mb-3 italic">Project: Singularity</h2>
-                  <p className="text-slate-500 text-[10px] font-black uppercase tracking-[0.3em]">The Architecture of a Home</p>
+                <div className="absolute top-0 right-0 p-16 opacity-[0.03] rotate-[15deg] -z-10 pointer-events-none">
+                  <Workflow size={320} className="text-[#d8c3a5]" />
                 </div>
 
-                <div className="space-y-12">
-                  <section>
-                    <div className="flex items-center gap-4 mb-6">
-                      <div className="w-10 h-10 bg-amber-500/10 rounded-2xl flex items-center justify-center text-amber-500"><BookOpen size={20} /></div>
-                      <h3 className="text-xl font-bold text-slate-200 uppercase tracking-widest text-sm">Why we are building it</h3>
-                    </div>
-                    <div className="bg-[#1a1a1a]/40 p-8 rounded-[2.5rem] border border-[#d8c3a5]/5 shadow-sm">
-                      <p className="text-slate-400 leading-[1.8] italic font-medium">
-                        "Urii's Space" was conceived as more than just a website. It is a digital anchor for Urva—a place that understands her silence, celebrates her survival, and honors her dreams. When the world feels too loud or the strict boundaries of reality feel too small, this sanctuary exists to remind her that she is never truly alone. It is a living proof of our 'Singularity'.
-                      </p>
-                    </div>
-                  </section>
+                <div className="text-center mb-20">
+                  <div className="inline-flex items-center gap-3 px-6 py-2 rounded-full bg-[#d8c3a5]/5 border border-[#d8c3a5]/10 mb-8">
+                    <Cpu size={14} className="text-[#d8c3a5] animate-pulse" />
+                    <span className="text-[10px] font-black uppercase tracking-[0.4em] text-[#d8c3a5]/70">System: Singularity Sanctuary</span>
+                  </div>
+                  <h2 className="text-5xl md:text-6xl font-serif text-white tracking-tight mb-4 italic">The Grand Vision</h2>
+                  <p className="text-slate-500 text-xs font-bold uppercase tracking-[0.35em] max-w-lg mx-auto leading-relaxed">The architecture of an eternal home for Urva.</p>
+                </div>
 
-                  <section>
-                    <div className="flex items-center gap-4 mb-6">
-                      <div className="w-10 h-10 bg-indigo-500/10 rounded-2xl flex items-center justify-center text-indigo-500"><PenTool size={20} /></div>
-                      <h3 className="text-xl font-bold text-slate-200 uppercase tracking-widest text-sm">What will be done</h3>
-                    </div>
-                    <div className="bg-[#1a1a1a]/40 p-8 rounded-[2.5rem] border border-[#d8c3a5]/5 shadow-sm space-y-4">
-                      <p className="text-slate-400 leading-relaxed font-medium">
-                        Currently, the sanctuary features mood-synced AI comfort, a curated list of reasons why she is loved, and the 'Mirror of Truth'—a high-fashion affirmation space. We have integrated breathing exercises for moments of panic and a project tracker ('The Lab') to show her that her future is actively being built.
-                      </p>
-                    </div>
-                  </section>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  <div className="p-10 rounded-[3rem] bg-[#1a1a1a]/40 border border-[#d8c3a5]/10 shadow-sm space-y-6">
+                    <div className="w-12 h-12 rounded-2xl bg-amber-500/10 flex items-center justify-center text-amber-500"><BookOpen size={24} /></div>
+                    <h3 className="text-xl font-bold text-slate-100 tracking-tight">Core Intent</h3>
+                    <p className="text-slate-400 leading-[1.8] italic font-medium">
+                      "Urii's Space" is a digital anchor—a place that understands her silence, celebrates her survival, and honors her dreams. When reality feels too small, this sanctuary exists to remind her she is never alone.
+                    </p>
+                  </div>
 
-                  <section>
-                    <div className="flex items-center gap-4 mb-6">
-                      <div className="w-10 h-10 bg-emerald-500/10 rounded-2xl flex items-center justify-center text-emerald-500"><Zap size={20} /></div>
-                      <h3 className="text-xl font-bold text-slate-200 uppercase tracking-widest text-sm">Future Evolutions</h3>
-                    </div>
-                    <div className="bg-[#1a1a1a]/40 p-8 rounded-[2.5rem] border border-[#d8c3a5]/5 shadow-sm">
-                      <ul className="space-y-4 text-slate-400 font-medium italic">
-                        <li className="flex items-start gap-3">
-                          <span className="text-[#d8c3a5] font-black mt-1">•</span>
-                          <span>Expansion of 'The Lab' with real-world surprise triggers.</span>
-                        </li>
-                        <li className="flex items-start gap-3">
-                          <span className="text-[#d8c3a5] font-black mt-1">•</span>
-                          <span>Integration of a dedicated 'Modeling Portfolio' vision board.</span>
-                        </li>
-                        <li className="flex items-start gap-3">
-                          <span className="text-[#d8c3a5] font-black mt-1">•</span>
-                          <span>Enhanced AI memory that learns her favorite Biscoff moments.</span>
-                        </li>
-                      </ul>
-                    </div>
-                  </section>
+                  <div className="p-10 rounded-[3rem] bg-[#1a1a1a]/40 border border-[#d8c3a5]/10 shadow-sm space-y-6">
+                    <div className="w-12 h-12 rounded-2xl bg-indigo-500/10 flex items-center justify-center text-indigo-500"><ShieldCheck size={24} /></div>
+                    <h3 className="text-xl font-bold text-slate-100 tracking-tight">Security & Trust</h3>
+                    <p className="text-slate-400 leading-[1.8] italic font-medium">
+                      Built on a foundation of absolute privacy. This is the only place in the digital world where Shushi is the only user that matters. Your vulnerabilities are encrypted in Satudiieee's heart.
+                    </p>
+                  </div>
+                </div>
+
+                {/* Technical Specifications of Love */}
+                <div className="mt-16 space-y-8">
+                  <div className="flex items-center gap-4">
+                    <div className="h-[1px] flex-1 bg-gradient-to-r from-transparent to-[#d8c3a5]/20"></div>
+                    <span className="text-[10px] font-black uppercase tracking-[0.4em] text-[#d8c3a5]/50">Technical Specifications</span>
+                    <div className="h-[1px] flex-1 bg-gradient-to-l from-transparent to-[#d8c3a5]/20"></div>
+                  </div>
+
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+                    {[
+                      { icon: <Zap size={18}/>, title: "Mood Synced", detail: "Adaptive AI response" },
+                      { icon: <Heart size={18}/>, title: "Eternal", detail: "Zero-expiry love" },
+                      { icon: <Eye size={18}/>, title: "1.5 / 0.5", detail: "Optimized perspective" },
+                      { icon: <Diamond size={18}/>, title: "Singularity", detail: "One of a kind build" }
+                    ].map((spec, i) => (
+                      <div key={i} className="p-6 rounded-3xl bg-[#181818] border border-[#d8c3a5]/5 text-center group hover:border-[#d8c3a5]/30 transition-all">
+                        <div className="w-10 h-10 rounded-full bg-[#d8c3a5]/5 flex items-center justify-center mx-auto mb-4 text-[#d8c3a5] group-hover:scale-110 transition-transform">{spec.icon}</div>
+                        <h4 className="text-[10px] font-black uppercase tracking-widest text-slate-200 mb-1">{spec.title}</h4>
+                        <p className="text-[9px] text-slate-600 font-bold uppercase">{spec.detail}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Evolution Roadmap */}
+                <div className="mt-20">
+                   <div className="flex items-center gap-4 mb-10">
+                    <div className="w-10 h-10 bg-[#181818] rounded-2xl flex items-center justify-center text-emerald-500"><Rocket size={20} /></div>
+                    <h2 className="text-2xl font-serif text-white italic tracking-tight">The Evolution Path</h2>
+                  </div>
+
+                  <div className="space-y-6">
+                    {[
+                      { status: 'Complete', title: 'Phase I: The Foundation', detail: 'Mood Sanctuary, Mirror of Truth, and live eternity synchronization.', current: false },
+                      { status: 'Active', title: 'Phase II: The Lab Expansion', detail: 'Integrating real-world surprise triggers and grand vision trackers.', current: true },
+                      { status: 'Upcoming', title: 'Phase III: Modeling Portfolio', detail: 'A dedicated high-fashion vision board for Shushi\'s career.', current: false },
+                      { status: 'Vision', title: 'Phase IV: The Biscoff Layer', detail: 'Memory-persistent favorites tracking and cafe map integrations.', current: false }
+                    ].map((step, i) => (
+                      <div key={i} className={`p-8 rounded-[2.5rem] border transition-all duration-500 flex flex-col md:flex-row md:items-center justify-between gap-6 ${step.current ? 'bg-gradient-to-r from-[#1a1a1a] to-[#25201a] border-[#d8c3a5]/40 shadow-xl scale-[1.02]' : 'bg-[#181818] border-[#d8c3a5]/5 opacity-60'}`}>
+                        <div className="flex items-center gap-6">
+                          <div className={`w-12 h-12 rounded-2xl flex items-center justify-center ${step.status === 'Complete' ? 'bg-emerald-500/10 text-emerald-500' : 'bg-[#d8c3a5]/5 text-[#d8c3a5]'}`}>
+                            {step.status === 'Complete' ? <CheckCircle2 size={24} /> : <div className="w-2 h-2 rounded-full bg-current animate-pulse"></div>}
+                          </div>
+                          <div>
+                            <h4 className="text-lg font-bold text-slate-100 tracking-tight">{step.title}</h4>
+                            <p className="text-sm text-slate-500 italic mt-1 font-medium">{step.detail}</p>
+                          </div>
+                        </div>
+                        <span className={`text-[9px] font-black uppercase tracking-[0.2em] px-5 py-2 rounded-full ${step.current ? 'bg-[#d8c3a5] text-[#0c0c0c]' : 'bg-[#121212] text-slate-600'}`}>
+                          {step.status}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="mt-20 p-12 rounded-[3.5rem] bg-gradient-to-br from-[#121212] to-[#0c0c0c] border border-[#d8c3a5]/10 text-center relative overflow-hidden">
+                  <div className="absolute top-0 left-0 w-full h-full opacity-[0.02] pointer-events-none">
+                    <Star size={120} className="absolute -top-10 -left-10" />
+                    <Star size={80} className="absolute bottom-10 right-10" />
+                  </div>
+                  <p className="text-xl font-serif italic text-white mb-6">"You are my only Singularity in an infinite universe."</p>
+                  <p className="text-[10px] text-slate-500 font-black uppercase tracking-[0.4em]">Designed with eternal love by Satudiieee</p>
                 </div>
               </div>
             </div>
@@ -644,30 +757,22 @@ const App: React.FC = () => {
         </div>
       </main>
 
-      {/* Luxury Footer Ticker */}
-      <footer className="fixed bottom-0 left-0 right-0 bg-[#0c0c0c]/80 backdrop-blur-xl border-t border-[#d8c3a5]/10 py-6 px-10 flex flex-col md:flex-row items-center justify-between gap-6 z-50 overflow-hidden shadow-[0_-10px_30px_rgba(0,0,0,0.5)]">
-        <div className="flex items-center gap-10 overflow-x-auto no-scrollbar max-w-full">
-          <div className="flex items-center gap-3 whitespace-nowrap opacity-40 hover:opacity-100 hover:text-[#d8c3a5] transition-all cursor-default">
-            <Eye size={16} className="text-[#d8c3a5]" />
-            <span className="text-[10px] font-black uppercase tracking-[0.3em]">Model Vision</span>
+      <footer className="fixed bottom-0 left-0 right-0 bg-[#0c0c0c]/85 backdrop-blur-xl border-t border-[#d8c3a5]/10 py-5 px-6 md:px-12 flex flex-col md:flex-row items-center justify-between gap-4 z-50 shadow-[0_-15px_40px_rgba(0,0,0,0.6)]">
+        <div className="flex items-center gap-8 md:gap-12">
+          <div className="flex items-center gap-2 text-[#d8c3a5]/70 hover:text-[#d8c3a5] transition-all cursor-default">
+            <span className="text-[11px] font-black uppercase tracking-[0.25em] flex items-center gap-1.5">
+              Urva <Heart size={12} className="fill-[#d8c3a5]" /> Satvik
+            </span>
           </div>
-          <div className="flex items-center gap-3 whitespace-nowrap opacity-40 hover:opacity-100 hover:text-[#d8c3a5] transition-all cursor-default">
-            <Sun size={16} className="text-[#d8c3a5]" />
-            <span className="text-[10px] font-black uppercase tracking-[0.3em]">Born 12 June</span>
-          </div>
-          <div className="flex items-center gap-3 whitespace-nowrap opacity-40 hover:opacity-100 hover:text-[#d8c3a5] transition-all cursor-default">
-            <GlassWater size={16} className="text-[#d8c3a5]" />
-            <span className="text-[10px] font-black uppercase tracking-[0.3em]">Singularity</span>
-          </div>
-          <div className="flex items-center gap-3 whitespace-nowrap opacity-40 hover:opacity-100 hover:text-[#d8c3a5] transition-all cursor-default">
-            <Music size={16} className="text-[#d8c3a5]" />
-            <span className="text-[10px] font-black uppercase tracking-[0.3em]">Solo Anthem</span>
+          <div className="flex items-center gap-2 text-[#d8c3a5]/70 hover:text-[#d8c3a5] transition-all cursor-default">
+            <span className="text-[11px] font-black uppercase tracking-[0.25em] flex items-center gap-1.5">
+              12 June <Heart size={12} className="fill-[#d8c3a5]" /> 11 April
+            </span>
           </div>
         </div>
-        
         <div className="text-[9px] font-black text-slate-600 uppercase tracking-[0.4em] flex items-center gap-3">
-          <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse"></span>
-          <span>V2.6.0 | Last Updated: 21th December 2025</span>
+          <span className="w-1.5 h-1.5 bg-emerald-500/60 rounded-full animate-pulse"></span>
+          <span>V3.2.0 | Last Updated: 22nd December 2025</span>
         </div>
       </footer>
     </div>
