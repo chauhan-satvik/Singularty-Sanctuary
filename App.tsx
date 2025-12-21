@@ -772,7 +772,7 @@ const App: React.FC = () => {
         </div>
         <div className="text-[9px] font-black text-slate-600 uppercase tracking-[0.4em] flex items-center gap-3">
           <span className="w-1.5 h-1.5 bg-emerald-500/60 rounded-full animate-pulse"></span>
-          <span>V3.2.0 | Last Updated: 22nd December 2025</span>
+          <span>V2.4.4 | Last Updated: 21nd December 2025</span>
         </div>
       </footer>
     </div>
