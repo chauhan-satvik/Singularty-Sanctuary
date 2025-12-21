@@ -152,7 +152,7 @@ const App: React.FC = () => {
       status: "In Development",
       type: "Career Mission",
       progress: 20,
-      hint: "Steps are being taken to help Shushi become the supermodel she was born to be. Your spotlight is guaranteed.",
+      hint: "Steps are being taken to achieve the future we always deserved. The spotlight is guaranteed",
       icon: <Camera className="text-indigo-400" />,
       luxury: true
     }
