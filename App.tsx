@@ -127,16 +127,6 @@ const App: React.FC = () => {
   // Luxury Missions
   const missions = [
     {
-      id: '123231',
-      title: "Project 123231",
-      status: "Initializing",
-      type: "Grand Surprise",
-      progress: 35,
-      hint: "A masterpiece specifically designed for your smile. It's connected to a date that redefined my existence.",
-      icon: <Diamond className="text-amber-400 animate-pulse" />,
-      luxury: true
-    },
-    {
       id: 'sanctuary',
       title: "Operation: Sanctuary",
       status: "Online",
@@ -147,12 +137,22 @@ const App: React.FC = () => {
       luxury: false
     },
     {
+      id: '123231',
+      title: "Project 123231",
+      status: "Initializing",
+      type: "Grand Surprise",
+      progress: 35,
+      hint: "A masterpiece specifically designed for your smile. It's connected to a dream that redefined my existence.",
+      icon: <Diamond className="text-amber-400 animate-pulse" />,
+      luxury: true
+    },
+    {
       id: 'modeling',
       title: "The Runway Vision",
       status: "In Development",
       type: "Career Mission",
       progress: 20,
-      hint: "Steps are being taken to help Shushi become the supermodel she was born to be. Your spotlight is guaranteed.",
+      hint: "SSteps are being taken to achieve best future for both of US , Your spotlight is guaranteed",
       icon: <Camera className="text-indigo-400" />,
       luxury: true
     }
