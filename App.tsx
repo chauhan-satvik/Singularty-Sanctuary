@@ -143,7 +143,7 @@ const App: React.FC = () => {
       type: "Grand Surprise",
       progress: 35,
       hint: "A masterpiece specifically designed for your smile. It's connected to a date that redefined my existence.",
-      icon: <Diamond className="text-amber-400 animate-pulse" />,
+      icon: <Trophy className="text-amber-400 animate-pulse" />,
       luxury: true
     },
     {
