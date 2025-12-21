@@ -206,12 +206,7 @@ const App: React.FC = () => {
     { category: 'The Singularity', icon: <Zap size={16} />, text: "Because you are Urva — and that alone completes the list." }
 
     // ... adding more conceptually to reach 100+ feel
-  ].concat(Array.from({ length: 70 }, (_, i) => ({
-    category: 'Infinite Devotion',
-    icon: <Heart size={16} />,
-    text: `Because of reason #${i + 31}: The infinite ways you inspire me every single day.`
-  })));
-
+  ]
   // Luxury Missions
   const missions = [
     {
