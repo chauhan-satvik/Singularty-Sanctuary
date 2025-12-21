@@ -152,7 +152,7 @@ const App: React.FC = () => {
       status: "In Development",
       type: "Career Mission",
       progress: 20,
-      hint: "SSteps are being taken to achieve best future for both of US , Your spotlight is guaranteed",
+      hint: "Steps are being taken to achieve best future for both of US, Your spotlight is guaranteed",
       icon: <Camera className="text-indigo-400" />,
       luxury: true
     }
