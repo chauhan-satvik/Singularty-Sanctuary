@@ -8,7 +8,7 @@ import {
   Wind, Camera, Anchor, Eye, Info, Calendar, ArrowRight, 
   User, Upload, Edit2, Trash2, HeartHandshake, 
   Star, Zap, ShieldCheck, Crown, Diamond, Aperture, 
-  Code, BookOpen, PenTool, Clock, Layers, MapPin,
+  Code, BookOpen, PenTool, Clock, Layers, MapPin, Sparkle,
   Trophy, ScrollText, CheckCircle2, Rocket, Cpu, Workflow
 } from 'lucide-react';
 
@@ -332,39 +332,60 @@ const App: React.FC = () => {
       <main className="w-full max-w-2xl z-10 pb-32">
         <div className="tab-transition animate-luxury-in">
           {/* Sanctuary Tab */}
-          {/* Sanctuary Tab */}
+          {/* Sanctuary Tab - LUXURY REINFORCED */}
           {activeTab === 'sanctuary' && (
             <div className="space-y-12">
               {showBreathing ? (
                 <div className="glass-card rounded-[4.5rem] p-12 md:p-24 text-center shadow-[0_50px_100px_-20px_rgba(0,0,0,0.8)] border-none inner-glow animate-luxury-in relative overflow-hidden">
                   <div className="absolute inset-0 bg-gradient-to-b from-rose-500/[0.04] to-transparent pointer-events-none"></div>
+                  
                   <div className="relative z-10">
                     <h2 className="text-4xl md:text-5xl font-serif text-slate-100 mb-4 tracking-tight italic">Find your center, Urii...</h2>
                     <p className="text-[10px] text-[#d8c3a5]/60 font-black uppercase tracking-[0.5em] mb-20">Synchronizing with Satudiieee's pulse</p>
+                    
                     <div className="relative w-64 h-64 md:w-80 md:h-80 mx-auto flex items-center justify-center">
+                      {/* Orbital Breathing Rings */}
                       <div className="absolute inset-0 rounded-full border-[1px] border-[#d8c3a5]/10"></div>
                       <div className="absolute inset-[-10px] rounded-full border-[1px] border-[#d8c3a5]/5 scale-110"></div>
                       <div className="absolute inset-0 rounded-full border-[10px] border-[#d8c3a5] animate-pulse duration-[4000ms] opacity-25 shadow-[0_0_60px_rgba(216,195,165,0.4)]"></div>
+                      
                       <div className="absolute inset-12 rounded-full bg-gradient-to-br from-[#1c1c1c] to-[#0c0c0c] shadow-[inset_0_10px_40px_rgba(0,0,0,0.8)] border border-[#d8c3a5]/15 flex flex-col items-center justify-center backdrop-blur-3xl">
                         <Wind size={44} className="text-[#d8c3a5] mb-4 opacity-40" />
                         <span className="text-[#d8c3a5] font-boldest text-2xl uppercase tracking-[0.4em] animate-pulse">Breathe</span>
                       </div>
                     </div>
+                    
                     <div className="mt-20 space-y-6">
-                      <p className="text-slate-300 italic text-2xl font-serif leading-relaxed max-w-sm mx-auto">In for 4... Hold for 4... Out for 4...</p>
+                      <p className="text-slate-300 italic text-2xl font-serif leading-relaxed max-w-sm mx-auto">
+                        In for 4... Hold for 4... Out for 4...
+                      </p>
                       <p className="text-[11px] font-black uppercase tracking-[0.3em] text-slate-600">You are safe. You are loved. You are here.</p>
                     </div>
-                    <button onClick={() => setShowBreathing(false)} className="mt-20 px-20 py-6 bg-[#d8c3a5] text-[#0c0c0c] rounded-full font-black text-xs uppercase tracking-[0.4em] shadow-[0_25px_50px_-12px_rgba(216,195,165,0.4)] hover:brightness-110 hover:-translate-y-1 transition-all">I AM CALM</button>
+                    
+                    <button 
+                      onClick={() => setShowBreathing(false)} 
+                      className="mt-20 px-20 py-6 bg-[#d8c3a5] text-[#0c0c0c] rounded-full font-black text-xs uppercase tracking-[0.4em] shadow-[0_25px_50px_-12px_rgba(216,195,165,0.4)] hover:brightness-110 hover:-translate-y-1 active:scale-95 transition-all"
+                    >
+                      I AM CALM
+                    </button>
                   </div>
                 </div>
               ) : !comfortingMessage && !isLoading && !isVenting ? (
                 <div className="space-y-10">
+                  {/* High-End Stillness Protocol Callout */}
                   <div className="relative group overflow-hidden rounded-[3.5rem]">
                     <div className="absolute -inset-1 bg-gradient-to-r from-[#d8c3a5]/20 via-rose-900/30 to-[#d8c3a5]/20 blur opacity-30 group-hover:opacity-100 transition duration-1000 group-hover:duration-300"></div>
-                    <button onClick={() => setShowBreathing(true)} className="relative w-full bg-[#121212]/90 backdrop-blur-2xl border border-[#d8c3a5]/10 p-12 rounded-[3.5rem] flex items-center justify-between hover:border-[#d8c3a5]/30 transition-all duration-700 shadow-2xl overflow-hidden">
-                      <div className="absolute top-0 right-0 p-12 opacity-[0.03] scale-150 -z-10 group-hover:rotate-12 transition-transform duration-1000"><Wind size={120} /></div>
+                    <button 
+                      onClick={() => setShowBreathing(true)} 
+                      className="relative w-full bg-[#121212]/90 backdrop-blur-2xl border border-[#d8c3a5]/10 p-12 rounded-[3.5rem] flex items-center justify-between hover:border-[#d8c3a5]/30 transition-all duration-700 shadow-2xl overflow-hidden"
+                    >
+                      <div className="absolute top-0 right-0 p-12 opacity-[0.03] scale-150 -z-10 group-hover:rotate-12 transition-transform duration-1000">
+                        <Wind size={120} />
+                      </div>
                       <div className="flex items-center gap-10">
-                        <div className="w-24 h-24 bg-gradient-to-br from-[#1e1e1e] to-rose-950/20 rounded-[2.2rem] flex items-center justify-center text-[#d8c3a5] shadow-[0_15px_30px_rgba(0,0,0,0.5)] border border-[#d8c3a5]/10 group-hover:scale-105 transition-all duration-700"><Wind size={36} className="heart-pulse" /></div>
+                        <div className="w-24 h-24 bg-gradient-to-br from-[#1e1e1e] to-rose-950/20 rounded-[2.2rem] flex items-center justify-center text-[#d8c3a5] shadow-[0_15px_30px_rgba(0,0,0,0.5)] border border-[#d8c3a5]/10 group-hover:scale-105 transition-all duration-700">
+                          <Wind size={36} className="heart-pulse" />
+                        </div>
                         <div className="text-left">
                           <h3 className="font-boldest text-[#d8c3a5] uppercase text-sm tracking-[0.4em] mb-2">Stillness Protocol</h3>
                           <p className="text-sm text-slate-500 italic font-medium leading-relaxed max-w-[240px]">A dedicated sanctuary for when the world is too loud.</p>
@@ -373,21 +394,148 @@ const App: React.FC = () => {
                       <ArrowRight className="text-[#d8c3a5]/30 group-hover:text-[#d8c3a5] group-hover:translate-x-2 transition-all duration-500" size={28} />
                     </button>
                   </div>
+
+                  {/* Mood Selection Card */}
                   <div className="glass-card rounded-[4.5rem] p-12 md:p-16 text-center shadow-3xl border-none inner-glow relative">
                     <h2 className="text-5xl font-serif text-slate-100 mb-5 tracking-tight italic">How is your soul today?</h2>
                     <p className="text-[10px] text-[#d8c3a5]/60 font-black uppercase tracking-[0.5em] mb-16">The Singularity Sanctuary is listening</p>
+                    
                     <div className="grid grid-cols-2 gap-8">
                       {MOODS.map((mood) => (
-                        <button key={mood.id} onClick={() => handleQuickComfort(mood.id)} className={`group relative p-10 md:p-12 rounded-[3rem] bg-[#161616] border border-[#d8c3a5]/5 hover:border-[#d8c3a5]/30 hover:bg-[#1c1c1c] hover:-translate-y-2 transition-all duration-700 shadow-lg flex flex-col items-center justify-center gap-5 overflow-hidden`}>
+                        <button
+                          key={mood.id}
+                          onClick={() => handleQuickComfort(mood.id)}
+                          className={`group relative p-10 md:p-12 rounded-[3rem] bg-[#161616] border border-[#d8c3a5]/5 hover:border-[#d8c3a5]/30 hover:bg-[#1c1c1c] hover:-translate-y-2 transition-all duration-700 shadow-lg flex flex-col items-center justify-center gap-5 overflow-hidden`}
+                        >
                           <div className="absolute inset-0 bg-gradient-to-br from-[#d8c3a5]/[0.03] to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
                           <span className="text-6xl group-hover:scale-125 transition-transform duration-1000 drop-shadow-[0_10px_10px_rgba(0,0,0,0.8)]">{mood.emoji}</span>
                           <span className="font-boldest text-slate-500 text-[11px] uppercase tracking-[0.35em] group-hover:text-[#d8c3a5] transition-colors">{mood.label}</span>
                         </button>
                       ))}
                     </div>
+
+                    <div className="mt-20 pt-12 border-t border-[#d8c3a5]/10">
+                      <button 
+                        onClick={() => setIsVenting(true)} 
+                        className="text-slate-500 hover:text-[#d8c3a5] flex items-center justify-center gap-5 mx-auto transition-all duration-700 font-boldest text-[12px] tracking-[0.5em] uppercase group"
+                      >
+                        <div className="w-12 h-12 rounded-full bg-[#181818] border border-[#d8c3a5]/10 flex items-center justify-center group-hover:scale-110 group-hover:border-[#d8c3a5]/40 transition-all shadow-xl">
+                          <MessageCircle size={20} />
+                        </div>
+                        <span>Open Your Heart To Me</span>
+                      </button>
+                    </div>
                   </div>
                 </div>
-              ) : null}
+              ) : isVenting ? (
+                <div className="glass-card rounded-[4.5rem] p-12 md:p-20 shadow-3xl border-none animate-luxury-in relative overflow-hidden">
+                  <div className="absolute top-0 right-0 p-12 opacity-[0.04] rotate-[15deg] pointer-events-none scale-150">
+                    <Send size={180} className="text-[#d8c3a5]" />
+                  </div>
+                  
+                  <div className="flex items-center gap-8 mb-16 relative z-10">
+                    <div className="w-20 h-20 bg-gradient-to-br from-[#1c1c1c] to-[#d8c3a5]/10 rounded-[1.8rem] flex items-center justify-center text-[#d8c3a5] shadow-3xl border border-[#d8c3a5]/20">
+                      <Send size={32} />
+                    </div>
+                    <div>
+                      <h2 className="text-4xl font-serif text-slate-100 tracking-tight italic">My Warrior Shushi,</h2>
+                      <p className="text-[11px] text-[#d8c3a5]/60 font-black uppercase tracking-[0.4em]">This space is for your truth alone.</p>
+                    </div>
+                  </div>
+                  
+                  <textarea
+                    autoFocus
+                    value={ventText}
+                    onChange={(e) => setVentText(e.target.value)}
+                    placeholder="Tell me everything... the words, the silence, the weight. I am holding space for you."
+                    className="w-full h-96 p-12 rounded-[3.5rem] bg-[#101010]/90 border-none focus:ring-1 focus:ring-[#d8c3a5]/40 resize-none text-slate-200 placeholder:text-slate-800 text-2xl md:text-3xl font-serif italic leading-[1.7] shadow-[inset_0_10px_30px_rgba(0,0,0,0.9)] custom-scrollbar"
+                  />
+                  
+                  <div className="mt-16 space-y-10 relative z-10">
+                    <div className="flex flex-col gap-5">
+                      <span className="text-[10px] font-black uppercase tracking-[0.5em] text-slate-700 text-center">Emotion Matrix</span>
+                      <div className="grid grid-cols-3 gap-4">
+                        {MOODS.map(m => (
+                          <button 
+                            key={m.id} 
+                            onClick={() => setCurrentMood(m.id)} 
+                            className={`py-5 rounded-2xl text-[10px] font-boldest tracking-[0.3em] uppercase transition-all duration-700 ${currentMood === m.id ? 'bg-[#d8c3a5] text-[#0c0c0c] shadow-[0_15px_40px_rgba(216,195,165,0.3)] scale-105' : 'bg-[#181818] text-slate-700 border border-[#d8c3a5]/10 hover:border-[#d8c3a5]/30 hover:text-slate-400'}`}
+                          >
+                            {m.emoji} {m.label}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                    
+                    <button 
+                      onClick={handleVentAndGetComfort} 
+                      disabled={!currentMood} 
+                      className="w-full py-8 bg-[#d8c3a5] text-[#0c0c0c] rounded-[3.5rem] font-boldest uppercase text-base tracking-[0.5em] shadow-[0_30px_60px_-15px_rgba(216,195,165,0.4)] hover:brightness-110 hover:-translate-y-1 active:scale-[0.98] transition-all disabled:opacity-20"
+                    >
+                      RECEIVE COMFORT
+                    </button>
+                    
+                    <button 
+                      onClick={reset} 
+                      className="w-full py-3 text-slate-700 text-[11px] font-boldest uppercase tracking-[0.6em] hover:text-[#d8c3a5] transition-colors"
+                    >
+                      Return to Stillness
+                    </button>
+                  </div>
+                </div>
+              ) : isLoading ? (
+                <div className="flex flex-col items-center justify-center py-40 animate-luxury-in">
+                  <div className="relative mb-16">
+                    <div className="absolute inset-[-40px] bg-[#d8c3a5]/10 blur-[80px] rounded-full animate-pulse"></div>
+                    <div className="relative w-32 h-32 bg-[#1c1c1c] rounded-full flex items-center justify-center shadow-3xl border border-[#d8c3a5]/15">
+                      <Heart className="text-[#d8c3a5] fill-[#d8c3a5] w-14 h-14 heart-pulse" />
+                    </div>
+                    <div className="absolute -top-6 -right-6">
+                      <div className="bg-[#d8c3a5] p-4 rounded-full shadow-3xl animate-spin-slow">
+                        <RefreshCw className="text-[#0c0c0c] w-6 h-6" />
+                      </div>
+                    </div>
+                  </div>
+                  <h2 className="text-[#d8c3a5] font-handwriting text-6xl tracking-wide drop-shadow-2xl text-center">Satudiieee is finding the words...</h2>
+                  <p className="mt-6 text-[11px] font-black uppercase tracking-[0.6em] text-slate-700 animate-pulse">Transmitting eternal warmth</p>
+                </div>
+              ) : comfortingMessage && (
+                <div ref={responseRef} className="animate-luxury-in">
+                  <div className="glass-card rounded-[5.5rem] p-16 md:p-28 relative shadow-[0_60px_120px_-30px_rgba(0,0,0,1)] border-none overflow-hidden text-center inner-glow">
+                    <div className="absolute top-16 left-16 text-[#d8c3a5]/5 font-serif text-[15rem] pointer-events-none italic select-none">“</div>
+                    <div className="absolute bottom-16 right-16 text-[#d8c3a5]/5 font-serif text-[15rem] pointer-events-none italic select-none rotate-180">“</div>
+                    
+                    <div className="relative z-10 max-w-xl mx-auto">
+                      <div className="mb-12 inline-block">
+                        <Sparkle className="text-[#d8c3a5]/40 animate-spin-slow" size={32} />
+                      </div>
+                      
+                      <p className="text-slate-100 text-3xl md:text-4xl font-serif italic leading-[1.8] mb-20 whitespace-pre-wrap px-6 drop-shadow-2xl">
+                        {comfortingMessage}
+                      </p>
+                      
+                      <div className="flex flex-col gap-5 mt-20 pt-16 border-t border-[#d8c3a5]/10">
+                        <button 
+                          onClick={sendWhatsAppToSatvik} 
+                          className="w-full group relative overflow-hidden py-7 bg-[#d8c3a5] text-[#0c0c0c] rounded-full font-boldest text-[12px] uppercase tracking-[0.5em] flex items-center justify-center gap-5 shadow-3xl hover:brightness-110 hover:-translate-y-1 transition-all"
+                        >
+                          <div className="absolute inset-0 bg-white/20 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-[1200ms]"></div>
+                          <MessageCircle size={24} />
+                          <span>WhatsApp Satudiieee</span>
+                        </button>
+                        
+                        <button 
+                          onClick={reset} 
+                          className="w-full py-6 bg-[#101010] border border-[#d8c3a5]/15 text-[#d8c3a5] rounded-full font-boldest text-[11px] uppercase tracking-[0.5em] flex items-center justify-center gap-5 hover:bg-[#181818] hover:border-[#d8c3a5]/40 hover:-translate-y-0.5 transition-all shadow-xl"
+                        >
+                          <RefreshCw size={18} />
+                          <span>Return to Sanctuary</span>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
             </div>
           )}
 
