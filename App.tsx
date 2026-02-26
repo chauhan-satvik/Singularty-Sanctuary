@@ -141,7 +141,7 @@ const App: React.FC = () => {
       title: "Project 123231",
       status: "Initializing",
       type: "Grand Surprise",
-      progress: 35,
+      progress: 30,
       hint: "A masterpiece specifically designed for your smile. It's connected to a date that redefined my existence.",
       icon: <Trophy className="text-indigo-400" />,
       luxury: true
@@ -876,7 +876,7 @@ const App: React.FC = () => {
         </div>
         <div className="text-[9px] font-black text-slate-600 uppercase tracking-[0.4em] flex items-center gap-3">
           <span className="w-1.5 h-1.5 bg-emerald-500/60 rounded-full animate-pulse"></span>
-          <span>V1.0.0 | Last Updated: 21nd December 2025</span>
+          <span>V1.0.0 | Last Updated: 26th Feb 2026</span>
         </div>
       </footer>
     </div>
